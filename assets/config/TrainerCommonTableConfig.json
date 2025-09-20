@@ -1,0 +1,666 @@
+[
+  {
+    "config_id": 22200,
+    "ee0cc585fcad587d": 22200,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "4": {
+        "rank_up_material": 400116,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 400116,
+        "rank_up_cost": 1
+      },
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "3": {
+        "rank_up_material": 400116,
+        "rank_up_cost": 1
+      },
+      "1": {
+        "rank_up_material": 400116,
+        "rank_up_cost": 1
+      },
+      "2": {
+        "rank_up_material": 400116,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 400116,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 400116,
+    "e363e64b722164aa": true,
+    "ffba01e1e29ca03c": 10
+  },
+  {
+    "config_id": 22900,
+    "ee0cc585fcad587d": 22900,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "3": {
+        "rank_up_material": 400117,
+        "rank_up_cost": 1
+      },
+      "1": {
+        "rank_up_material": 400117,
+        "rank_up_cost": 1
+      },
+      "4": {
+        "rank_up_material": 400117,
+        "rank_up_cost": 1
+      },
+      "2": {
+        "rank_up_material": 400117,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 400117,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 400117,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 400117,
+    "e363e64b722164aa": false,
+    "ffba01e1e29ca03c": 8
+  },
+  {
+    "config_id": 21700,
+    "ee0cc585fcad587d": 21700,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "4": {
+        "rank_up_material": 400119,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 400119,
+        "rank_up_cost": 1
+      },
+      "1": {
+        "rank_up_material": 400119,
+        "rank_up_cost": 1
+      },
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "2": {
+        "rank_up_material": 400119,
+        "rank_up_cost": 1
+      },
+      "3": {
+        "rank_up_material": 400119,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 400119,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 400119,
+    "e363e64b722164aa": true,
+    "ffba01e1e29ca03c": 4
+  },
+  {
+    "config_id": 26800,
+    "ee0cc585fcad587d": 26800,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "4": {
+        "rank_up_material": 400120,
+        "rank_up_cost": 1
+      },
+      "1": {
+        "rank_up_material": 400120,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 400120,
+        "rank_up_cost": 1
+      },
+      "2": {
+        "rank_up_material": 400120,
+        "rank_up_cost": 1
+      },
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "3": {
+        "rank_up_material": 400120,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 400120,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 400120,
+    "e363e64b722164aa": false,
+    "ffba01e1e29ca03c": 5
+  },
+  {
+    "config_id": 10300,
+    "ee0cc585fcad587d": 10300,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "1": {
+        "rank_up_material": 400121,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 400121,
+        "rank_up_cost": 1
+      },
+      "3": {
+        "rank_up_material": 400121,
+        "rank_up_cost": 1
+      },
+      "4": {
+        "rank_up_material": 400121,
+        "rank_up_cost": 1
+      },
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "2": {
+        "rank_up_material": 400121,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 400121,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 400121,
+    "e363e64b722164aa": false,
+    "ffba01e1e29ca03c": 7
+  },
+  {
+    "config_id": 1000,
+    "ee0cc585fcad587d": 1000,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "4": {
+        "rank_up_material": 400122,
+        "rank_up_cost": 1
+      },
+      "2": {
+        "rank_up_material": 400122,
+        "rank_up_cost": 1
+      },
+      "3": {
+        "rank_up_material": 400122,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 400122,
+        "rank_up_cost": 1
+      },
+      "1": {
+        "rank_up_material": 400122,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 400122,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 400122,
+    "e363e64b722164aa": false,
+    "ffba01e1e29ca03c": 10
+  },
+  {
+    "config_id": 1100,
+    "ee0cc585fcad587d": 1100,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "1": {
+        "rank_up_material": 400118,
+        "rank_up_cost": 1
+      },
+      "4": {
+        "rank_up_material": 400118,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 400118,
+        "rank_up_cost": 1
+      },
+      "2": {
+        "rank_up_material": 400118,
+        "rank_up_cost": 1
+      },
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "3": {
+        "rank_up_material": 400118,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 400118,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 400118,
+    "e363e64b722164aa": false,
+    "ffba01e1e29ca03c": 12
+  },
+  {
+    "config_id": 1200,
+    "ee0cc585fcad587d": 1200,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "3": {
+        "rank_up_material": 400123,
+        "rank_up_cost": 1
+      },
+      "4": {
+        "rank_up_material": 400123,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 400123,
+        "rank_up_cost": 1
+      },
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "1": {
+        "rank_up_material": 400123,
+        "rank_up_cost": 1
+      },
+      "2": {
+        "rank_up_material": 400123,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 400123,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 400123,
+    "e363e64b722164aa": false,
+    "ffba01e1e29ca03c": 16
+  },
+  {
+    "config_id": 201,
+    "ee0cc585fcad587d": 200,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "2": {
+        "rank_up_material": 500050,
+        "rank_up_cost": 1
+      },
+      "1": {
+        "rank_up_material": 500050,
+        "rank_up_cost": 1
+      },
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "3": {
+        "rank_up_material": 500050,
+        "rank_up_cost": 1
+      },
+      "4": {
+        "rank_up_material": 500050,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 500050,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 500050,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 500050,
+    "e363e64b722164aa": true,
+    "ffba01e1e29ca03c": 0
+  },
+  {
+    "config_id": 202,
+    "ee0cc585fcad587d": 200,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "4": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "1": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "3": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "2": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 500051,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 500051,
+    "e363e64b722164aa": true,
+    "ffba01e1e29ca03c": 0
+  },
+  {
+    "config_id": 203,
+    "ee0cc585fcad587d": 200,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "5": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "4": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "2": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "3": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "1": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 500052,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 500052,
+    "e363e64b722164aa": true,
+    "ffba01e1e29ca03c": 0
+  },
+  {
+    "config_id": 204,
+    "ee0cc585fcad587d": 200,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "1": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "3": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "2": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "4": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 500051,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 500053,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 500053,
+    "e363e64b722164aa": true,
+    "ffba01e1e29ca03c": 0
+  },
+  {
+    "config_id": 205,
+    "ee0cc585fcad587d": 200,
+    "sound_banks": [],
+    "rank_up_cost": {
+      "4": {
+        "rank_up_material": 500050,
+        "rank_up_cost": 1
+      },
+      "3": {
+        "rank_up_material": 500050,
+        "rank_up_cost": 1
+      },
+      "2": {
+        "rank_up_material": 500050,
+        "rank_up_cost": 1
+      },
+      "0": {
+        "rank_up_material": 0,
+        "rank_up_cost": 0
+      },
+      "1": {
+        "rank_up_material": 500050,
+        "rank_up_cost": 1
+      },
+      "5": {
+        "rank_up_material": 500050,
+        "rank_up_cost": 1
+      }
+    },
+    "fbbc7a3e010c3647": [
+      {
+        "fea482a8b1a301ab": 500050,
+        "b30ed973daba6c56": 1
+      }
+    ],
+    "a3635dc9aae1e470": [
+      {
+        "fea482a8b1a301ab": 1,
+        "b30ed973daba6c56": 100
+      }
+    ],
+    "aeac1dbc0086651f": 500050,
+    "e363e64b722164aa": true,
+    "ffba01e1e29ca03c": 0
+  },
+  {
+    "config_id": 23401,
+    "ee0cc585fcad587d": 23401,
+    "sound_banks": [],
+    "rank_up_cost": {},
+    "fbbc7a3e010c3647": [],
+    "a3635dc9aae1e470": [],
+    "aeac1dbc0086651f": 0,
+    "e363e64b722164aa": true,
+    "ffba01e1e29ca03c": 6
+  },
+  {
+    "config_id": 21600,
+    "ee0cc585fcad587d": 21600,
+    "sound_banks": [],
+    "rank_up_cost": {},
+    "fbbc7a3e010c3647": [],
+    "a3635dc9aae1e470": [],
+    "aeac1dbc0086651f": 0,
+    "e363e64b722164aa": true,
+    "ffba01e1e29ca03c": 3
+  },
+  {
+    "config_id": 11400,
+    "ee0cc585fcad587d": 11400,
+    "sound_banks": [],
+    "rank_up_cost": {},
+    "fbbc7a3e010c3647": [],
+    "a3635dc9aae1e470": [],
+    "aeac1dbc0086651f": 0,
+    "e363e64b722164aa": false,
+    "ffba01e1e29ca03c": 9
+  },
+  {
+    "config_id": 1400,
+    "ee0cc585fcad587d": 1400,
+    "sound_banks": [],
+    "rank_up_cost": {},
+    "fbbc7a3e010c3647": [],
+    "a3635dc9aae1e470": [],
+    "aeac1dbc0086651f": 0,
+    "e363e64b722164aa": false,
+    "ffba01e1e29ca03c": 15
+  },
+  {
+    "config_id": 1500,
+    "ee0cc585fcad587d": 1500,
+    "sound_banks": [],
+    "rank_up_cost": {},
+    "fbbc7a3e010c3647": [],
+    "a3635dc9aae1e470": [],
+    "aeac1dbc0086651f": 0,
+    "e363e64b722164aa": false,
+    "ffba01e1e29ca03c": 14
+  },
+  {
+    "config_id": 1300,
+    "ee0cc585fcad587d": 1300,
+    "sound_banks": [],
+    "rank_up_cost": {},
+    "fbbc7a3e010c3647": [],
+    "a3635dc9aae1e470": [],
+    "aeac1dbc0086651f": 0,
+    "e363e64b722164aa": false,
+    "ffba01e1e29ca03c": 13
+  }
+]

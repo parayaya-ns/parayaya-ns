@@ -1,0 +1,20 @@
+.{
+    .http_addr = "0.0.0.0",
+    .http_port = 10100,
+    .resources = .{
+        .ifix_url = "http://autopatchos.hknexusanima.com/ifix/v0.3_live/1188647018_836485",
+        .design_data_url = "https://autopatchos.hknexusanima.com/design_data/v0.3_live/847131_e347a33b7f",
+        .resource_url = "https://autopatchos.hknexusanima.com/resource/v0.3_live/847921_ab1b0dc1e2",
+        .video_url = "https://autopatchos.hknexusanima.com/video/v0.3_live/821844_90bb61786e",
+        .ini_url = "https://autopatchos.hknexusanima.com/ini/v0.3_live/820659_5356a584dd",
+        .audio_url = "https://autopatchos.hknexusanima.com/audio/v0.3_live/820661_d420f801f3",
+
+        // Uncomment in case of beta autopatch nuke. This assumes you already have assets downloaded.
+        // .ifix_url = "http://127.0.0.1:10100/ifix/v0.3_live/1188647018_836485",
+        // .design_data_url = "http://127.0.0.1:10100/design_data/v0.3_live/847131_e347a33b7f",
+        // .resource_url = "http://127.0.0.1:10100/resource/v0.3_live/847921_ab1b0dc1e2",
+        // .video_url = "http://127.0.0.1:10100/video/v0.3_live/821844_90bb61786e",
+        // .ini_url = "http://127.0.0.1:10100/ini/v0.3_live/820659_5356a584dd",
+        // .audio_url = "http://127.0.0.1:10100/audio/v0.3_live/820661_d420f801f3",
+    },
+}

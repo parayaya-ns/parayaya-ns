@@ -1,0 +1,9 @@
+.direnv
+zig-out/
+.zig-cache/
+
+/proto/cs_proto/
+/proto/cs_proto/*.proto
+
+# Configuration files
+/dispatch_config.zon
