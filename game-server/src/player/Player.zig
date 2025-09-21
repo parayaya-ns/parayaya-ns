@@ -8,6 +8,7 @@ const Assets = @import("../Assets.zig");
 const BasicInfo = @import("BasicInfo.zig");
 const SceneData = @import("SceneData.zig");
 const TrainerData = @import("TrainerData.zig");
+const SpriteData = @import("SpriteData.zig");
 const Customization = @import("Customization.zig");
 
 const properties = @import("properties.zig");
@@ -16,12 +17,14 @@ uid: u32,
 basic_info: BasicInfo = .default,
 scene_data: SceneData = .default,
 trainer: TrainerData = .default,
+sprite: SpriteData = .default,
 customization: Customization = .default,
 
 pub fn deinit(player: *@This(), gpa: Allocator) void {
     player.basic_info.deinit(gpa);
     player.scene_data.deinit(gpa);
     player.trainer.deinit(gpa);
+    player.sprite.deinit(gpa);
     player.customization.deinit(gpa);
 }
 
@@ -71,6 +74,10 @@ pub fn onFirstLogin(player: *Player, gpa: Allocator, assets: *const Assets) !voi
 
     for (tables.trainer_common_table_config.items) |*config| {
         try player.trainer.unlockTrainer(gpa, config);
+    }
+
+    for (tables.sprite_common_table.items) |*config| {
+        try player.sprite.unlockSprite(gpa, config);
     }
 
     player.customization.avatar_id.set(51002);

@@ -24,7 +24,7 @@ pub fn unlockTrainer(data: *@This(), gpa: Allocator, config: *const tables.Train
 }
 
 pub const Trainer = struct {
-    pub const max_rank: u32 = 6;
+    pub const max_rank: u32 = 5;
 
     id: u32,
     rank: u32,

@@ -4,6 +4,36 @@ const IntMap = @import("int_map.zig").IntMap;
 const ArenaAllocator = std.heap.ArenaAllocator;
 const Allocator = std.mem.Allocator;
 
+pub const SpriteCommonConfig = struct {
+    config_id: u32,
+    b979298be2397c25: u32,
+    ac1218e1cd7fc862: bool,
+    a9dfde835e8fe4ef: AD61077CFCBEFAEA,
+    f7df080da2483eda: AD61077CFCBEFAEA,
+    bfc250af57dd31bd: AD61077CFCBEFAEA,
+    ed8fa9cec8efef00: f32,
+    eb772844ea861886: f32,
+    ed876e103a129115: AD61077CFCBEFAEA,
+    bc46d37711424dcf: []const u32,
+    b7873d900545c3fb: []const SpriteRankConfig,
+    aeac1dbc0086651f: u32,
+    a041070e901885c3: u32,
+    f5ed1423f389139b: E865F6F8B8B44C1E,
+    baf26bd56cce102e: E865F6F8B8B44C1E,
+    a0a7a6588b40bc66: E865F6F8B8B44C1E,
+    bd06a3db9f7441ce: []const u32,
+    f48a7f93ae859e1c: []const u32,
+    a42119f3bd7469b2: []const u32,
+    acb3f44f0c7f3e52: []const u32,
+};
+
+pub const SpriteRankConfig = struct {
+    a9dfde835e8fe4ef: AD61077CFCBEFAEA,
+    f5ed1423f389139b: E865F6F8B8B44C1E,
+    e5ba8e59574183dd: u32,
+    rank_up_cost: ?SpriteRankUpCost,
+};
+
 pub const TrainerCommonConfig = struct {
     config_id: u32,
     ee0cc585fcad587d: u32,
@@ -16,6 +46,11 @@ pub const TrainerCommonConfig = struct {
 };
 
 pub const TrainerRankUpCost = struct {
+    rank_up_material: u32,
+    rank_up_cost: u32,
+};
+
+pub const SpriteRankUpCost = struct {
     rank_up_material: u32,
     rank_up_cost: u32,
 };
@@ -62,6 +97,7 @@ pub const Vector3 = struct {
 pub const TrainerCommonTableConfig = Table(TrainerCommonConfig, .config_id, "TrainerCommonTableConfig.json");
 pub const PlayerAvatarTableConfig = Table(PlayerAvatarConfig, .config_id, "PlayerAvatarTableConfig.json");
 pub const TeleportTable = Table(TeleportConfig, .config_id, "TeleportTable.json");
+pub const SpriteCommonTable = Table(SpriteCommonConfig, .config_id, "SpriteCommonTable.json");
 
 pub fn Table(
     comptime Config: type,
@@ -97,6 +133,7 @@ pub fn Table(
 
 pub const TableConfigManager = struct {
     arena: ArenaAllocator,
+    sprite_common_table: SpriteCommonTable,
     trainer_common_table_config: TrainerCommonTableConfig,
     player_avatar_table_config: PlayerAvatarTableConfig,
     teleport_table: TeleportTable,

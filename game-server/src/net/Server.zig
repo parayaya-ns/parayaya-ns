@@ -26,9 +26,8 @@ pub fn init(gpa: Allocator, address: Address) !@This() {
 
     var polls: std.ArrayList(posix.pollfd) = .empty;
     try polls.ensureTotalCapacity(gpa, initial_polls_array_size);
-    errdefer polls.deinit(gpa);
 
-    try polls.append(gpa, .{
+    polls.appendAssumeCapacity(.{
         .fd = listener,
         .revents = 0,
         .events = posix.POLL.IN,
