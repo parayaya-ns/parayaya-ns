@@ -91,6 +91,7 @@ pub const Sprite = struct {
 
 pub const SpriteAbility = struct {
     pub const flight_ability_id: u32 = 1;
+    pub const gliding_ability_id: u32 = 2;
 
     id: u32,
     cur_sprite_id: u32 = 0,

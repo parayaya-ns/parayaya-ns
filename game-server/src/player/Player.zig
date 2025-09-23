@@ -88,6 +88,10 @@ pub fn onFirstLogin(player: *Player, gpa: Allocator, assets: *const Assets) !voi
         SpriteData.SpriteAbility.flight_ability_id,
     ).?.cur_sprite_id = 270200;
 
+    player.sprite.abilities.getPtr(
+        SpriteData.SpriteAbility.gliding_ability_id,
+    ).?.cur_sprite_id = 670400;
+
     player.customization.avatar_id.set(51002);
     for (tables.player_avatar_table_config.items) |*config| {
         _ = try player.customization.unlocked_avatars.put(gpa, config.config_id);
