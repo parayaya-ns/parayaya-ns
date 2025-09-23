@@ -34,6 +34,24 @@ pub const SpriteRankConfig = struct {
     rank_up_cost: ?SpriteRankUpCost,
 };
 
+pub const SpriteAbilityConfig = struct {
+    config_id: u32,
+    f61f614c469da3e5: u32,
+    e6ef814da79bdeb5: FB15B066A5E7656D,
+    fff00d1c372a5cac: u32,
+    ff5cef61e57a9ade: bool,
+    aa8ee8408213f6ef: E865F6F8B8B44C1E,
+    e9d391d90a983e60: E865F6F8B8B44C1E,
+    e190cd0528828c1c: AD61077CFCBEFAEA,
+    e0b95cfbaae84fc1: u32,
+    e15dd00a6701ec58: u32,
+    a64d9065edb624c4: u32,
+};
+
+pub const FB15B066A5E7656D = struct {
+    abf3d5cd2c06f981: []const u8,
+};
+
 pub const TrainerCommonConfig = struct {
     config_id: u32,
     ee0cc585fcad587d: u32,
@@ -98,6 +116,7 @@ pub const TrainerCommonTableConfig = Table(TrainerCommonConfig, .config_id, "Tra
 pub const PlayerAvatarTableConfig = Table(PlayerAvatarConfig, .config_id, "PlayerAvatarTableConfig.json");
 pub const TeleportTable = Table(TeleportConfig, .config_id, "TeleportTable.json");
 pub const SpriteCommonTable = Table(SpriteCommonConfig, .config_id, "SpriteCommonTable.json");
+pub const SpriteAbilityTable = Table(SpriteAbilityConfig, .config_id, "SpriteAbilityTable.json");
 
 pub fn Table(
     comptime Config: type,
@@ -134,6 +153,7 @@ pub fn Table(
 pub const TableConfigManager = struct {
     arena: ArenaAllocator,
     sprite_common_table: SpriteCommonTable,
+    sprite_ability_table: SpriteAbilityTable,
     trainer_common_table_config: TrainerCommonTableConfig,
     player_avatar_table_config: PlayerAvatarTableConfig,
     teleport_table: TeleportTable,

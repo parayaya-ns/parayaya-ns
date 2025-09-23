@@ -36,7 +36,7 @@ pub fn onGetCharacterDressingReq(_: Allocator, _: *AppInterface, _: pb.GetCharac
 
 pub fn onSetPlayerAvatarReq(_: Allocator, interface: *AppInterface, req: pb.SetPlayerAvatarReq) !pb.SetPlayerAvatarRsp {
     const customization = &interface.player.customization;
-    std.log.debug("{}", .{req});
+    log.debug("{}", .{req});
 
     if (!customization.unlocked_avatars.contains(req.player_avatar_id)) return .{ .retcode = .RetPlayerAvatarLocked };
     customization.avatar_id.set(req.player_avatar_id);

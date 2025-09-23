@@ -23,7 +23,7 @@ pub fn fastTravelToTeleport(scene: *Scene, player_uid: u32, config: *const table
     scene.scene_id = config.scene_id;
 
     if (scene.findPlayerActor(player_uid)) |entity| {
-        entity.getMotion().* = .initFromConfig(&config.position, &config.rotation);
+        entity.motion = .initFromConfig(&config.position, &config.rotation);
     }
 }
 
@@ -34,10 +34,21 @@ pub fn addEntity(scene: *Scene, gpa: Allocator, entity: Entity) !u64 {
     return scene.entity_id_counter;
 }
 
+pub fn summon(scene: *Scene, gpa: Allocator, summoner: *const Entity, summonee_id: u32, placement: Motion) !u64 {
+    return try scene.addEntity(gpa, .{
+        .owner_uid = summoner.owner_uid,
+        .motion = placement,
+        .parameters = .{ .minion = .{
+            .config_id = summonee_id,
+            .summoner_entity_id = summoner.entity_id,
+        } },
+    });
+}
+
 pub fn findPlayerActor(scene: *Scene, player_uid: u32) ?*Entity {
     var entities = scene.entities.iterator();
     while (entities.next()) |e| {
-        if (std.meta.activeTag(e.value_ptr.*) == .actor and e.value_ptr.actor.player_uid == player_uid) return e.value_ptr;
+        if (std.meta.activeTag(e.value_ptr.parameters) == .actor and e.value_ptr.parameters.actor.player_uid == player_uid) return e.value_ptr;
     }
 
     return null;
@@ -53,10 +64,7 @@ pub fn toClient(scene: *const Scene, gpa: Allocator) !pb.SceneInfo {
 
     var entities = scene.entities.iterator();
     while (entities.next()) |e| {
-        var entity_info = e.value_ptr.toClient();
-        entity_info.entity_id = e.key_ptr.*;
-
-        scene_info.scene_entity_list.appendAssumeCapacity(entity_info);
+        scene_info.scene_entity_list.appendAssumeCapacity(e.value_ptr.toClient());
     }
 
     return scene_info;

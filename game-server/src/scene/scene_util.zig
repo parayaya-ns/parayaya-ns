@@ -15,11 +15,12 @@ pub fn createDefaultScene(
     };
 
     _ = try scene.addEntity(gpa, .{
-        .actor = .{
+        .motion = .{},
+        .owner_uid = owner_uid,
+        .parameters = .{ .actor = .{
             .config_id = owner_actor_config_id,
             .player_uid = owner_uid,
-            .motion = .{},
-        },
+        } },
     });
 
     return scene;

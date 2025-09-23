@@ -34,7 +34,7 @@ pub fn onSceneEntityMoveReq(_: Allocator, interface: *AppInterface, req: pb.Scen
 
     for (req.entity_motion_list.items) |entity_motion| {
         if (scene.entities.getPtr(entity_motion.entity_id)) |entity| {
-            entity.getMotion().fromClient(&(entity_motion.motion orelse .{}));
+            entity.motion = .fromClient(&(entity_motion.motion orelse .{}));
         }
     }
 
@@ -60,4 +60,16 @@ pub fn onFastTravelReq(_: Allocator, interface: *AppInterface, req: pb.FastTrave
     }
 
     return .{ .retcode = .RetSucc };
+}
+
+pub fn onSummonAdvSpriteMinionReq(gpa: Allocator, interface: *AppInterface, req: pb.SummonAdvSpriteMinionReq) !pb.SummonAdvSpriteMinionRsp {
+    const scene = interface.scene orelse return .{ .retcode = .RetFail };
+    const actor = scene.findPlayerActor(interface.player.uid) orelse return .{ .retcode = .RetFail };
+    const summonee_entity_id = try scene.summon(gpa, actor, req.sprite_id, .fromClient(&(req.motion orelse .{})));
+
+    return .{
+        .retcode = .RetSucc,
+        .cur_sprite_id = req.sprite_id,
+        .summoned_entity = scene.entities.getPtr(summonee_entity_id).?.toClient(),
+    };
 }

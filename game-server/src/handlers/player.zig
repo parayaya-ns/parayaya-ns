@@ -62,8 +62,8 @@ pub fn onSetNicknameReq(gpa: Allocator, interface: *AppInterface, req: pb.SetNic
 pub fn onSetActorReq(_: Allocator, interface: *AppInterface, req: pb.SetActorReq) !pb.SetActorRsp {
     const scene = interface.scene orelse return .{ .retcode = .RetServerInternalError };
 
-    const actor = scene.findPlayerActor(interface.player.uid).?;
-    actor.actor.config_id = req.trainer_id;
+    const entity = scene.findPlayerActor(interface.player.uid).?;
+    entity.parameters.actor.config_id = req.trainer_id;
     scene.is_modified = true;
 
     return .{

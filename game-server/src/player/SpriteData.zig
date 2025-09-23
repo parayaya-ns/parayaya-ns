@@ -9,6 +9,7 @@ pub const default: @This() = .{};
 
 property: properties.PropertyMixin(@This()) = .{},
 sprites: properties.PropertyArrayHashMap(u32, Sprite) = .empty,
+abilities: properties.PropertyArrayHashMap(u32, SpriteAbility) = .empty,
 
 pub fn deinit(data: *@This(), gpa: Allocator) void {
     for (data.sprites.map.values()) |*sprite| {
@@ -16,6 +17,7 @@ pub fn deinit(data: *@This(), gpa: Allocator) void {
     }
 
     data.sprites.deinit(gpa);
+    data.abilities.deinit(gpa);
 }
 
 pub fn unlockSprite(data: *@This(), gpa: Allocator, config: *const tables.SpriteCommonConfig) Allocator.Error!void {
@@ -26,6 +28,14 @@ pub fn unlockSprite(data: *@This(), gpa: Allocator, config: *const tables.Sprite
             .exp = 0,
             .rank = Sprite.max_rank,
             .seen = true,
+        });
+    }
+}
+
+pub fn unlockAbility(data: *@This(), gpa: Allocator, config: *const tables.SpriteAbilityConfig) Allocator.Error!void {
+    if (!data.abilities.contains(config.config_id)) {
+        try data.abilities.put(gpa, config.config_id, .{
+            .id = config.config_id,
         });
     }
 }
@@ -68,5 +78,19 @@ pub const Sprite = struct {
 
     pub fn deinit(sprite: *Sprite, gpa: Allocator) void {
         gpa.free(sprite.name);
+    }
+};
+
+pub const SpriteAbility = struct {
+    pub const flight_ability_id: u32 = 1;
+
+    id: u32,
+    cur_sprite_id: u32 = 0,
+
+    pub fn toClient(ability: *const SpriteAbility) pb.SpriteAbility {
+        return .{
+            .sprite_ability_id = ability.id,
+            .cur_ability_sprite_id = ability.cur_sprite_id,
+        };
     }
 };

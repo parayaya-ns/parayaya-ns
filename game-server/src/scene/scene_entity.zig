@@ -6,36 +6,57 @@ const Allocator = std.mem.Allocator;
 
 pub const EntityType = enum(i32) {
     actor = 1,
+    minion = 5,
 };
 
-pub const Entity = union(EntityType) {
-    actor: Actor,
+pub const Entity = struct {
+    entity_id: u64 = 0,
+    owner_uid: u32,
+    motion: Motion,
+    parameters: EntityParameters,
 
     pub fn toClient(entity: *const Entity) pb.SceneEntity {
-        return switch (entity.*) {
-            inline else => |e| e.toClient(),
+        return switch (entity.parameters) {
+            inline else => |e| @TypeOf(e).toClient(entity),
         };
     }
+};
 
-    pub fn getMotion(entity: *Entity) *Motion {
-        return switch (entity.*) {
-            inline else => |*e| &e.motion,
-        };
-    }
+pub const EntityParameters = union(EntityType) {
+    actor: Actor,
+    minion: Minion,
 
     pub const Actor = struct {
-        motion: Motion,
         player_uid: u32,
         config_id: u32,
 
-        pub fn toClient(actor: *const Actor) pb.SceneEntity {
+        pub fn toClient(entity: *const Entity) pb.SceneEntity {
             return .{
+                .entity_id = entity.entity_id,
                 .entity_type = .EntityActor,
-                .owner_uid = actor.player_uid,
-                .motion = actor.motion.toClient(),
+                .owner_uid = entity.owner_uid,
+                .motion = entity.motion.toClient(),
                 .scene_actor = .{
-                    .config_id = actor.config_id,
-                    .player_uid = actor.player_uid,
+                    .config_id = entity.parameters.actor.config_id,
+                    .player_uid = entity.parameters.actor.player_uid,
+                },
+            };
+        }
+    };
+
+    pub const Minion = struct {
+        config_id: u32,
+        summoner_entity_id: u64,
+
+        pub fn toClient(entity: *const Entity) pb.SceneEntity {
+            return .{
+                .entity_id = entity.entity_id,
+                .entity_type = .EntityActor,
+                .owner_uid = entity.owner_uid,
+                .motion = entity.motion.toClient(),
+                .scene_minion = .{
+                    .config_id = entity.parameters.minion.config_id,
+                    .summoner_entity_id = entity.parameters.minion.summoner_entity_id,
                 },
             };
         }
@@ -60,7 +81,9 @@ pub const Motion = struct {
         };
     }
 
-    pub fn fromClient(motion: *Motion, client_info: *const pb.MotionInfo) void {
+    pub fn fromClient(client_info: *const pb.MotionInfo) Motion {
+        var motion: Motion = .{};
+
         if (client_info.pos) |pos| {
             motion.pos = .{ pos.x, pos.y, pos.z };
         }
@@ -68,5 +91,7 @@ pub const Motion = struct {
         if (client_info.rot) |rot| {
             motion.rot = .{ rot.x, rot.y, rot.z };
         }
+
+        return motion;
     }
 };
