@@ -10,6 +10,7 @@ const SceneData = @import("SceneData.zig");
 const TrainerData = @import("TrainerData.zig");
 const SpriteData = @import("SpriteData.zig");
 const Customization = @import("Customization.zig");
+const ChsTeamData = @import("ChsTeamData.zig");
 
 const properties = @import("properties.zig");
 
@@ -19,6 +20,7 @@ scene_data: SceneData = .default,
 trainer: TrainerData = .default,
 sprite: SpriteData = .default,
 customization: Customization = .default,
+chs_teams: ChsTeamData = .default,
 
 pub fn deinit(player: *@This(), gpa: Allocator) void {
     player.basic_info.deinit(gpa);
@@ -26,6 +28,7 @@ pub fn deinit(player: *@This(), gpa: Allocator) void {
     player.trainer.deinit(gpa);
     player.sprite.deinit(gpa);
     player.customization.deinit(gpa);
+    player.chs_teams.deinit(gpa);
 }
 
 pub fn isAnyFieldChanged(player: *const Player) bool {
@@ -100,4 +103,7 @@ pub fn onFirstLogin(player: *Player, gpa: Allocator, assets: *const Assets) !voi
     for (tables.teleport_table.items) |*config| {
         _ = try player.scene_data.unlocked_teleports.put(gpa, config.config_id);
     }
+
+    // At least one empty team should be created beforehand
+    try player.chs_teams.teams.put(gpa, 0, .{ .index = 0 });
 }

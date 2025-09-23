@@ -8,7 +8,7 @@ pub const default: @This() = .{};
 
 property: properties.PropertyMixin(@This()) = .{},
 nickname: properties.Slice(u8) = .empty,
-level: properties.BasicType(u32) = .{ .value = 1 },
+level: properties.BasicType(u32) = .{ .value = 30 },
 exp: properties.BasicType(u32) = .default,
 create_timestamp: properties.BasicType(u32) = .default,
 actor_id: properties.BasicType(u32) = .{ .value = 22900 },

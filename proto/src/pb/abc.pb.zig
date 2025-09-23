@@ -1064,20 +1064,20 @@ pub const F783300878127E85 = struct {
     };
 };
 
-pub const F8072B15960A9D04 = struct {
+pub const ChangeChsPlayerTeamNameRsp = struct {
     pub const cmd_id: u16 = 433;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
     retcode: Retcode = @enumFromInt(0),
     B9D20B2812C8B540: u32 = 0,
-    A95B263A756924BD: u32 = 0,
-    B8D592FEC1D7E75B: ManagedString = .Empty,
+    change_team_index: u32 = 0,
+    change_team_name: ManagedString = .Empty,
 
     pub const _desc_table = .{
         .retcode = fd(1, null, .{ .Varint = .Simple }),
         .B9D20B2812C8B540 = fd(4, null, .{ .FixedInt = .I32 }),
-        .A95B263A756924BD = fd(11, null, .{ .Varint = .Simple }),
-        .B8D592FEC1D7E75B = fd(13, null, .String),
+        .change_team_index = fd(11, null, .{ .Varint = .Simple }),
+        .change_team_name = fd(13, null, .String),
     };
 };
 
@@ -1780,10 +1780,10 @@ pub const ECA04F04AD537A24 = struct {
     pub const cmd_id: u16 = 443;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    chs_team_index: u32 = 0,
+    index: u32 = 0,
 
     pub const _desc_table = .{
-        .chs_team_index = fd(10, null, .{ .Varint = .Simple }),
+        .index = fd(10, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -2252,10 +2252,10 @@ pub const F7BD75970FBCA374 = struct {
     pub const cmd_id: u16 = 1499;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    chs_team_index: u32 = 0,
+    index: u32 = 0,
 
     pub const _desc_table = .{
-        .chs_team_index = fd(8, null, .{ .Varint = .Simple }),
+        .index = fd(8, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -2284,7 +2284,7 @@ pub const PlayerSyncNotify = struct {
     A38DEFE7F436CCED: ?B433A82BB59DA31D = null,
     B7FCB158FD003376: ArrayList(Quest) = .empty,
     A7A70AB0740FE64D: ArrayList(FinishDialogInfo) = .empty,
-    E44AA69171C1A0DA: ?E90F318D84C6E9D0 = null,
+    chs_player_team_sync: ?ChsPlayerTeamSyncInfo = null,
     sprites: ArrayList(Sprite) = .empty,
     B8F0370833CDD130: ArrayList(SpriteContract) = .empty,
     A74D082233082819: ArrayList(WorldVar) = .empty,
@@ -2319,7 +2319,7 @@ pub const PlayerSyncNotify = struct {
         .A38DEFE7F436CCED = fd(7, null, .{ .SubMessage = {} }),
         .B7FCB158FD003376 = fd(8, null, .{ .List = .{ .SubMessage = {} } }),
         .A7A70AB0740FE64D = fd(9, null, .{ .List = .{ .SubMessage = {} } }),
-        .E44AA69171C1A0DA = fd(10, null, .{ .SubMessage = {} }),
+        .chs_player_team_sync = fd(10, null, .{ .SubMessage = {} }),
         .sprites = fd(11, null, .{ .List = .{ .SubMessage = {} } }),
         .B8F0370833CDD130 = fd(12, null, .{ .List = .{ .SubMessage = {} } }),
         .A74D082233082819 = fd(13, null, .{ .List = .{ .SubMessage = {} } }),
@@ -3000,13 +3000,13 @@ pub const A06BE78002430479 = struct {
 
 pub const ChsTrainer = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    chs_team_index: u32 = 0,
+    index: u32 = 0,
     trainer_id: u32 = 0,
     rank: u32 = 0,
     AFCBA6315531229C: ArrayList(FF9F205E7EF9B5D4) = .empty,
 
     pub const _desc_table = .{
-        .chs_team_index = fd(2, null, .{ .Varint = .Simple }),
+        .index = fd(2, null, .{ .Varint = .Simple }),
         .trainer_id = fd(4, null, .{ .Varint = .Simple }),
         .rank = fd(7, null, .{ .Varint = .Simple }),
         .AFCBA6315531229C = fd(13, null, .{ .List = .{ .SubMessage = {} } }),
@@ -3221,11 +3221,11 @@ pub const EBBF17935706D008 = struct {
     pub const cmd_id: u16 = 1364;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    chs_team_index: u32 = 0,
+    index: u32 = 0,
     BAF0FAB689EFA621: bool = false,
 
     pub const _desc_table = .{
-        .chs_team_index = fd(5, null, .{ .Varint = .Simple }),
+        .index = fd(5, null, .{ .Varint = .Simple }),
         .BAF0FAB689EFA621 = fd(2, null, .{ .Varint = .Simple }),
     };
 };
@@ -5430,14 +5430,14 @@ pub const E2D8A59C3578989F = struct {
     };
 };
 
-pub const E90F318D84C6E9D0 = struct {
+pub const ChsPlayerTeamSyncInfo = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    E18CFBA4643A2770: ArrayList(ChsPlayerTeam) = .empty,
+    sync_chs_team_list: ArrayList(ChsPlayerTeam) = .empty,
     B2C30614158C1748: u32 = 0,
     E9FBB1ABF73CDF5D: u32 = 0,
 
     pub const _desc_table = .{
-        .E18CFBA4643A2770 = fd(7, null, .{ .List = .{ .SubMessage = {} } }),
+        .sync_chs_team_list = fd(7, null, .{ .List = .{ .SubMessage = {} } }),
         .B2C30614158C1748 = fd(8, null, .{ .Varint = .Simple }),
         .E9FBB1ABF73CDF5D = fd(11, null, .{ .Varint = .Simple }),
     };
@@ -5601,10 +5601,10 @@ pub const E680AEBA3E14CC3D = struct {
     pub const cmd_id: u16 = 437;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    chs_team_index: u32 = 0,
+    index: u32 = 0,
 
     pub const _desc_table = .{
-        .chs_team_index = fd(15, null, .{ .Varint = .Simple }),
+        .index = fd(15, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -5984,16 +5984,16 @@ pub const SpriteAttr = struct {
     };
 };
 
-pub const B3F06E0385F791CE = struct {
+pub const ChangeChsPlayerTeamNameReq = struct {
     pub const cmd_id: u16 = 449;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    AEB222EE6A27574B: ManagedString = .Empty,
-    A08C9940D8549BEB: u32 = 0,
+    team_name: ManagedString = .Empty,
+    team_index: u32 = 0,
 
     pub const _desc_table = .{
-        .AEB222EE6A27574B = fd(9, null, .String),
-        .A08C9940D8549BEB = fd(2, null, .{ .Varint = .Simple }),
+        .team_name = fd(9, null, .String),
+        .team_index = fd(2, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -6257,20 +6257,20 @@ pub const ChatSession = struct {
 
 pub const ChsPlayerTeam = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    chess_minion_list: ArrayList(ChsChessMinion) = .empty,
-    chess_sprite_list: ArrayList(ChsChessSprite) = .empty,
+    chs_minion_list: ArrayList(ChsChessMinion) = .empty,
+    chs_sprite_list: ArrayList(ChsChessSprite) = .empty,
     name: ManagedString = .Empty,
-    chs_team_index: u32 = 0,
+    index: u32 = 0,
     chs_trainer_list: ArrayList(ChsTrainer) = .empty,
     ED833F0C42B4BAF2: u32 = 0,
     B37E17408DB1767B: ArrayList(F80C0164065337EC) = .empty,
     F00A066B0E31A679: ArrayList(F02B8870D5188880) = .empty,
 
     pub const _desc_table = .{
-        .chess_minion_list = fd(2, null, .{ .List = .{ .SubMessage = {} } }),
-        .chess_sprite_list = fd(4, null, .{ .List = .{ .SubMessage = {} } }),
+        .chs_minion_list = fd(2, null, .{ .List = .{ .SubMessage = {} } }),
+        .chs_sprite_list = fd(4, null, .{ .List = .{ .SubMessage = {} } }),
         .name = fd(5, null, .String),
-        .chs_team_index = fd(8, null, .{ .Varint = .Simple }),
+        .index = fd(8, null, .{ .Varint = .Simple }),
         .chs_trainer_list = fd(9, null, .{ .List = .{ .SubMessage = {} } }),
         .ED833F0C42B4BAF2 = fd(12, null, .{ .FixedInt = .I32 }),
         .B37E17408DB1767B = fd(13, null, .{ .List = .{ .SubMessage = {} } }),
