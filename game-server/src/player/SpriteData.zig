@@ -48,6 +48,14 @@ pub fn syncToClient(data: *const @This(), gpa: Allocator, notify: *pb.PlayerSync
             notify.sprites.appendAssumeCapacity(try sprite.toClient(gpa));
         }
     }
+
+    try notify.sync_sprite_ability_list.ensureTotalCapacity(gpa, data.abilities.changed_keys.items.len);
+
+    for (data.abilities.changed_keys.items) |id| {
+        if (data.abilities.getConstPtr(id)) |ability| {
+            notify.sync_sprite_ability_list.appendAssumeCapacity(ability.toClient());
+        }
+    }
 }
 
 pub const Sprite = struct {

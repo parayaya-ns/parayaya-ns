@@ -29,7 +29,10 @@ pub fn fastTravelToTeleport(scene: *Scene, player_uid: u32, config: *const table
 
 pub fn addEntity(scene: *Scene, gpa: Allocator, entity: Entity) !u64 {
     scene.entity_id_counter += 1;
-    try scene.entities.put(gpa, scene.entity_id_counter, entity);
+
+    const result = try scene.entities.getOrPut(gpa, scene.entity_id_counter);
+    result.value_ptr.* = entity;
+    result.value_ptr.entity_id = scene.entity_id_counter;
 
     return scene.entity_id_counter;
 }
