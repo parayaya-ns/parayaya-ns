@@ -23,6 +23,8 @@ pub fn onPlayerLoginReq(gpa: Allocator, interface: *AppInterface, req: pb.Player
     );
 
     interface.scene.?.fastTravelToTeleport(interface.player.uid, teleport);
+    try scene_util.spawnBattleNpcNearPlayer(gpa, &interface.scene.?, interface.player.uid);
+
     interface.scene.?.is_modified = false;
 
     return .{
@@ -60,7 +62,7 @@ pub fn onSetNicknameReq(gpa: Allocator, interface: *AppInterface, req: pb.SetNic
 }
 
 pub fn onSetActorReq(_: Allocator, interface: *AppInterface, req: pb.SetActorReq) !pb.SetActorRsp {
-    const scene = interface.scene orelse return .{ .retcode = .RetServerInternalError };
+    const scene = &(interface.scene orelse return .{ .retcode = .RetServerInternalError });
 
     const entity = scene.findPlayerActor(interface.player.uid).?;
     entity.parameters.actor.config_id = req.trainer_id;

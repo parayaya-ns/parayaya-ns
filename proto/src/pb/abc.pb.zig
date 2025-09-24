@@ -13,6 +13,275 @@ const UnionDecodingError = protobuf.UnionDecodingError;
 /// import package google.protobuf
 const google_protobuf = @import("google/protobuf.pb.zig");
 
+pub const ChsUnitType = enum(i32) {
+    ChsUnitType_None = 0,
+    ChsUnitType_Stage = 1,
+    ChsUnitType_Sprite = 2,
+    ChsUnitType_Minion = 3,
+    _,
+};
+
+pub const BD51C9B00691E15F = enum(i32) {
+    BD51C9B00691E15F_Trainer = 0,
+    BD51C9B00691E15F_Law = 1,
+    BD51C9B00691E15F_Trait = 2,
+    BD51C9B00691E15F_Stage = 3,
+    BD51C9B00691E15F_Skill = 4,
+    BD51C9B00691E15F_Shop = 5,
+    _,
+};
+
+pub const E14C0D2815A422A3 = enum(i32) {
+    E14C0D2815A422A3_WaitToUse = 0,
+    E14C0D2815A422A3_WaitToDispatch = 1,
+    E14C0D2815A422A3_Using = 2,
+    E14C0D2815A422A3_Reserved = 3,
+    _,
+};
+
+pub const B5089F60705FE77A = enum(i32) {
+    B5089F60705FE77A_None = 0,
+    B5089F60705FE77A_Law = 1,
+    B5089F60705FE77A_Trait = 2,
+    _,
+};
+
+pub const E13A0D8F5AE46E00 = enum(i32) {
+    E13A0D8F5AE46E00_None = 0,
+    E13A0D8F5AE46E00_MaxHp = 1,
+    E13A0D8F5AE46E00_AttackDamage = 2,
+    E13A0D8F5AE46E00_AbilityPower = 3,
+    E13A0D8F5AE46E00_Armor = 4,
+    E13A0D8F5AE46E00_MagicResistance = 5,
+    E13A0D8F5AE46E00_Special = 6,
+    _,
+};
+
+pub const ChsSpecificVerifyData = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    ADE28826D5F056DF: ?ChsVerifyPataData = null,
+    E1F6F4556C5189BB: ArrayList(u32) = .empty,
+
+    pub const _desc_table = .{
+        .ADE28826D5F056DF = fd(1, null, .{ .SubMessage = {} }),
+        .E1F6F4556C5189BB = fd(2, null, .{ .PackedList = .{ .Varint = .Simple } }),
+    };
+};
+
+pub const ChsVerifyPieceLink = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    B88EFB22328EAD67: u32 = 0,
+    E69A97FBCAF46D00: ArrayList(E9865038CA3011D1) = .empty,
+
+    pub const _desc_table = .{
+        .B88EFB22328EAD67 = fd(1, null, .{ .Varint = .Simple }),
+        .E69A97FBCAF46D00 = fd(2, null, .{ .List = .{ .SubMessage = {} } }),
+    };
+};
+
+pub const E9865038CA3011D1 = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    ABBF7FE48471FAE1: ChsUnitType = @enumFromInt(0),
+    EC2357816B51243B: u32 = 0,
+
+    pub const _desc_table = .{
+        .ABBF7FE48471FAE1 = fd(1, null, .{ .Varint = .Simple }),
+        .EC2357816B51243B = fd(2, null, .{ .Varint = .Simple }),
+    };
+};
+
+pub const ChsAnomalyVerifyData = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    AD53FA19D567EF15: u32 = 0,
+    BC19F58BCD5310DB: i32 = 0,
+
+    pub const _desc_table = .{
+        .AD53FA19D567EF15 = fd(1, null, .{ .Varint = .Simple }),
+        .BC19F58BCD5310DB = fd(2, null, .{ .Varint = .Simple }),
+    };
+};
+
+pub const EEEB26745B811066 = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    F9CC936C0EE5B327: u32 = 0,
+    E5BA8E59574183DD: u32 = 0,
+    A52DBFAF26E1FCF8: u32 = 0,
+
+    pub const _desc_table = .{
+        .F9CC936C0EE5B327 = fd(1, null, .{ .Varint = .Simple }),
+        .E5BA8E59574183DD = fd(2, null, .{ .Varint = .Simple }),
+        .A52DBFAF26E1FCF8 = fd(3, null, .{ .Varint = .Simple }),
+    };
+};
+
+pub const ChsGameDeployData = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    verify_trainer_list: ArrayList(ChsVerifyTrainer) = .empty,
+    verify_sprite_list: ArrayList(ChsVerifySprite) = .empty,
+    verify_piece_link_list: ArrayList(ChsVerifyPieceLink) = .empty,
+    verify_minion_list: ArrayList(ChsVerifyMinion) = .empty,
+    AFCBA6315531229C: ArrayList(ChsVerifyEquip) = .empty,
+    EC9EA783DE9053AA: ArrayList(ChsVerifyConsumable) = .empty,
+    ED1D447ADA0AFE1F: ?ChsSpecificVerifyData = null,
+    A8D2546041B724AB: ArrayList(ChsVerifyEquip) = .empty,
+
+    pub const _desc_table = .{
+        .verify_trainer_list = fd(1, null, .{ .List = .{ .SubMessage = {} } }),
+        .verify_sprite_list = fd(2, null, .{ .List = .{ .SubMessage = {} } }),
+        .verify_piece_link_list = fd(3, null, .{ .List = .{ .SubMessage = {} } }),
+        .verify_minion_list = fd(4, null, .{ .List = .{ .SubMessage = {} } }),
+        .AFCBA6315531229C = fd(5, null, .{ .List = .{ .SubMessage = {} } }),
+        .EC9EA783DE9053AA = fd(6, null, .{ .List = .{ .SubMessage = {} } }),
+        .ED1D447ADA0AFE1F = fd(7, null, .{ .SubMessage = {} }),
+        .A8D2546041B724AB = fd(8, null, .{ .List = .{ .SubMessage = {} } }),
+    };
+};
+
+pub const ChsVerifyConsumable = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    A009A8297B0407A7: u32 = 0,
+    E51747A2B81CF2B8: ChsUnitType = @enumFromInt(0),
+    F0E4BEB9DA4AE4F9: u32 = 0,
+    ABBF7FE48471FAE1: BD51C9B00691E15F = @enumFromInt(0),
+    E5770E2D3D0E04AD: u32 = 0,
+    EB57988CFFC144ED: u32 = 0,
+    B04826D0D10734A3: bool = false,
+    F562DA1C00CE60C6: E14C0D2815A422A3 = @enumFromInt(0),
+
+    pub const _desc_table = .{
+        .A009A8297B0407A7 = fd(1, null, .{ .Varint = .Simple }),
+        .E51747A2B81CF2B8 = fd(2, null, .{ .Varint = .Simple }),
+        .F0E4BEB9DA4AE4F9 = fd(3, null, .{ .Varint = .Simple }),
+        .ABBF7FE48471FAE1 = fd(4, null, .{ .Varint = .Simple }),
+        .E5770E2D3D0E04AD = fd(5, null, .{ .Varint = .Simple }),
+        .EB57988CFFC144ED = fd(6, null, .{ .Varint = .Simple }),
+        .B04826D0D10734A3 = fd(7, null, .{ .Varint = .Simple }),
+        .F562DA1C00CE60C6 = fd(8, null, .{ .Varint = .Simple }),
+    };
+};
+
+pub const ChsVerifyTrainer = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    trainer_id: u32 = 0,
+    E729C6F71BA8C13A: u32 = 0,
+    EB57988CFFC144ED: u32 = 0,
+    AFCBA6315531229C: ArrayList(ChsVerifyEquip) = .empty,
+
+    pub const _desc_table = .{
+        .trainer_id = fd(1, null, .{ .Varint = .Simple }),
+        .E729C6F71BA8C13A = fd(2, null, .{ .Varint = .Simple }),
+        .EB57988CFFC144ED = fd(3, null, .{ .Varint = .Simple }),
+        .AFCBA6315531229C = fd(4, null, .{ .List = .{ .SubMessage = {} } }),
+    };
+};
+
+pub const ChsSpriteData = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    AEA6A4F794917D32: u32 = 0,
+    EB57988CFFC144ED: u32 = 0,
+    AC12922B081B5508: u32 = 0,
+    anomaly_verify_data: ?ChsAnomalyVerifyData = null,
+    EECFAC2F92BCFDD1: u32 = 0,
+    FC08F7B600D1FA0A: ArrayList(E4A625A013D4206B) = .empty,
+
+    pub const _desc_table = .{
+        .AEA6A4F794917D32 = fd(1, null, .{ .Varint = .Simple }),
+        .EB57988CFFC144ED = fd(2, null, .{ .Varint = .Simple }),
+        .AC12922B081B5508 = fd(3, null, .{ .Varint = .Simple }),
+        .anomaly_verify_data = fd(4, null, .{ .SubMessage = {} }),
+        .EECFAC2F92BCFDD1 = fd(5, null, .{ .Varint = .Simple }),
+        .FC08F7B600D1FA0A = fd(6, null, .{ .List = .{ .SubMessage = {} } }),
+    };
+};
+
+pub const E25B94A584B52A80 = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    A4E84C173B0D2D94: u32 = 0,
+    AEFF33D79168A7C6: i32 = 0,
+    EC26B23359439386: u32 = 0,
+
+    pub const _desc_table = .{
+        .A4E84C173B0D2D94 = fd(1, null, .{ .Varint = .Simple }),
+        .AEFF33D79168A7C6 = fd(2, null, .{ .Varint = .Simple }),
+        .EC26B23359439386 = fd(3, null, .{ .Varint = .Simple }),
+    };
+};
+
+pub const ChsVerifyMinion = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    EC2357816B51243B: u32 = 0,
+    ABBF7FE48471FAE1: B5089F60705FE77A = @enumFromInt(0),
+    E5770E2D3D0E04AD: u32 = 0,
+    B911680C3A7465EC: u32 = 0,
+    B142513909F9F791: u32 = 0,
+
+    pub const _desc_table = .{
+        .EC2357816B51243B = fd(1, null, .{ .Varint = .Simple }),
+        .ABBF7FE48471FAE1 = fd(2, null, .{ .Varint = .Simple }),
+        .E5770E2D3D0E04AD = fd(3, null, .{ .Varint = .Simple }),
+        .B911680C3A7465EC = fd(4, null, .{ .Varint = .Simple }),
+        .B142513909F9F791 = fd(5, null, .{ .Varint = .Simple }),
+    };
+};
+
+pub const E4A625A013D4206B = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    BA1BD2AFE76EF7F7: E13A0D8F5AE46E00 = @enumFromInt(0),
+    FD5CE1005889F5B2: u32 = 0,
+
+    pub const _desc_table = .{
+        .BA1BD2AFE76EF7F7 = fd(1, null, .{ .Varint = .Simple }),
+        .FD5CE1005889F5B2 = fd(2, null, .{ .Varint = .Simple }),
+    };
+};
+
+pub const ChsVerifyPataData = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    A4C6FCD5EAEF11D0: ArrayList(u32) = .empty,
+    B8B173D93D422B5B: ArrayList(E25B94A584B52A80) = .empty,
+    F8826418AA50568C: ArrayList(EEEB26745B811066) = .empty,
+
+    pub const _desc_table = .{
+        .A4C6FCD5EAEF11D0 = fd(1, null, .{ .PackedList = .{ .Varint = .Simple } }),
+        .B8B173D93D422B5B = fd(2, null, .{ .List = .{ .SubMessage = {} } }),
+        .F8826418AA50568C = fd(3, null, .{ .List = .{ .SubMessage = {} } }),
+    };
+};
+
+pub const ChsVerifyEquip = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    A5471BBCC9726238: u32 = 0,
+    E51747A2B81CF2B8: ChsUnitType = @enumFromInt(0),
+    F0E4BEB9DA4AE4F9: u32 = 0,
+    ABBF7FE48471FAE1: BD51C9B00691E15F = @enumFromInt(0),
+    E5770E2D3D0E04AD: u32 = 0,
+    EB57988CFFC144ED: u32 = 0,
+
+    pub const _desc_table = .{
+        .A5471BBCC9726238 = fd(1, null, .{ .Varint = .Simple }),
+        .E51747A2B81CF2B8 = fd(2, null, .{ .Varint = .Simple }),
+        .F0E4BEB9DA4AE4F9 = fd(3, null, .{ .Varint = .Simple }),
+        .ABBF7FE48471FAE1 = fd(4, null, .{ .Varint = .Simple }),
+        .E5770E2D3D0E04AD = fd(5, null, .{ .Varint = .Simple }),
+        .EB57988CFFC144ED = fd(6, null, .{ .Varint = .Simple }),
+    };
+};
+
+pub const ChsVerifySprite = struct {
+    pb: protobuf.ProtobufMixins(@This()) = .{},
+    E21B3114ADEEE8A1: u32 = 0,
+    B911680C3A7465EC: u32 = 0,
+    unit_type: ChsUnitType = @enumFromInt(0),
+    sprite_data: ?ChsSpriteData = null,
+
+    pub const _desc_table = .{
+        .E21B3114ADEEE8A1 = fd(1, null, .{ .Varint = .Simple }),
+        .B911680C3A7465EC = fd(2, null, .{ .Varint = .Simple }),
+        .unit_type = fd(3, null, .{ .Varint = .Simple }),
+        .sprite_data = fd(4, null, .{ .SubMessage = {} }),
+    };
+};
+
 pub const F842B80EDFD17A01 = enum(i32) {
     F842B80EDFD17A01_Editor = 0,
     F842B80EDFD17A01_Ios = 1,
@@ -29,11 +298,11 @@ pub const MainMissionStatus = enum(i32) {
     _,
 };
 
-pub const BBA71A2D8DC05180 = enum(i32) {
-    BBA71A2D8DC05180_None = 0,
-    BBA71A2D8DC05180_Win = 1,
-    BBA71A2D8DC05180_Lose = 2,
-    BBA71A2D8DC05180_Quit = 3,
+pub const BattleResult = enum(i32) {
+    BattleResult_None = 0,
+    BattleResult_Win = 1,
+    BattleResult_Lose = 2,
+    BattleResult_Quit = 3,
     _,
 };
 
@@ -226,9 +495,9 @@ pub const QuestStatus = enum(i32) {
     _,
 };
 
-pub const F2968E0ADC45246C = enum(i32) {
-    F2968E0ADC45246C_None = 0,
-    F2968E0ADC45246C_Defeated = 1,
+pub const SceneCharacterStatus = enum(i32) {
+    SceneCharacterStatus_None = 0,
+    SceneCharacterStatus_Defeated = 1,
     _,
 };
 
@@ -253,26 +522,18 @@ pub const SceneEntityType = enum(i32) {
     _,
 };
 
-pub const ChsUnitType = enum(i32) {
-    ChsUnitType_None = 0,
-    ChsUnitType_Stage = 1,
-    ChsUnitType_Sprite = 2,
-    ChsUnitType_Minion = 3,
-    _,
-};
-
-pub const F174A518FFF944D0 = enum(i32) {
-    F174A518FFF944D0_None = 0,
-    F174A518FFF944D0_AllHomeDead = 1,
-    F174A518FFF944D0_AllAwayDead = 2,
-    F174A518FFF944D0_Timeout = 3,
-    F174A518FFF944D0_SurvivedSucc = 4,
-    F174A518FFF944D0_HomeVipKilled = 5,
-    F174A518FFF944D0_AwayVipKilled = 6,
-    F174A518FFF944D0_OccupyMoreGridSucc = 7,
-    F174A518FFF944D0_OccupyMoreGridFail = 8,
-    F174A518FFF944D0_CustomWin = 9,
-    F174A518FFF944D0_CustomLose = 10,
+pub const BattleRoundEndReason = enum(i32) {
+    BattleRoundEndReason_None = 0,
+    BattleRoundEndReason_AllHomeDead = 1,
+    BattleRoundEndReason_AllAwayDead = 2,
+    BattleRoundEndReason_Timeout = 3,
+    BattleRoundEndReason_SurvivedSucc = 4,
+    BattleRoundEndReason_HomeVipKilled = 5,
+    BattleRoundEndReason_AwayVipKilled = 6,
+    BattleRoundEndReason_OccupyMoreGridSucc = 7,
+    BattleRoundEndReason_OccupyMoreGridFail = 8,
+    BattleRoundEndReason_CustomWin = 9,
+    BattleRoundEndReason_CustomLose = 10,
     _,
 };
 
@@ -332,11 +593,11 @@ pub const BF2813B2DD0F6EB0 = enum(i32) {
     _,
 };
 
-pub const B80E3F79A9598E39 = enum(i32) {
-    B80E3F79A9598E39_AdvFactionNpcStatusNone = 0,
-    B80E3F79A9598E39_AdvFactionNpcStatusShow = 1,
-    B80E3F79A9598E39_AdvFactionNpcStatusFinish = 2,
-    B80E3F79A9598E39_AdvFactionNpcStatusTrack = 3,
+pub const AdvFactionNpcStatus = enum(i32) {
+    AdvFactionNpcStatusNone = 0,
+    AdvFactionNpcStatusShow = 1,
+    AdvFactionNpcStatusFinish = 2,
+    AdvFactionNpcStatusTrack = 3,
     _,
 };
 
@@ -355,13 +616,6 @@ pub const ED32772994017EBF = enum(i32) {
     _,
 };
 
-pub const B5089F60705FE77A = enum(i32) {
-    B5089F60705FE77A_None = 0,
-    B5089F60705FE77A_Law = 1,
-    B5089F60705FE77A_Trait = 2,
-    _,
-};
-
 pub const F170C2F0CE67A04C = enum(i32) {
     F170C2F0CE67A04C_None = 0,
     F170C2F0CE67A04C_EnterBattle = 1,
@@ -370,11 +624,11 @@ pub const F170C2F0CE67A04C = enum(i32) {
     _,
 };
 
-pub const E9B5B38A7B3AFEA8 = enum(i32) {
-    E9B5B38A7B3AFEA8_None = 0,
-    E9B5B38A7B3AFEA8_Win = 1,
-    E9B5B38A7B3AFEA8_Lose = 2,
-    E9B5B38A7B3AFEA8_Draw = 3,
+pub const BattleRoundStatus = enum(i32) {
+    BattleRoundStatus_None = 0,
+    BattleRoundStatus_Win = 1,
+    BattleRoundStatus_Lose = 2,
+    BattleRoundStatus_Draw = 3,
     _,
 };
 
@@ -418,16 +672,6 @@ pub const BB7CBCA1DA52A1D8 = enum(i32) {
     _,
 };
 
-pub const BD51C9B00691E15F = enum(i32) {
-    BD51C9B00691E15F_Trainer = 0,
-    BD51C9B00691E15F_Law = 1,
-    BD51C9B00691E15F_Trait = 2,
-    BD51C9B00691E15F_Stage = 3,
-    BD51C9B00691E15F_Skill = 4,
-    BD51C9B00691E15F_Shop = 5,
-    _,
-};
-
 pub const SpriteAttrType = enum(i32) {
     SpriteAttrType_None = 0,
     SpriteAttrType_MaxHp = 1,
@@ -454,13 +698,13 @@ pub const ClientMailStatus = enum(i32) {
     _,
 };
 
-pub const A42496AEB0B0F127 = enum(i32) {
-    A42496AEB0B0F127_None = 0,
-    A42496AEB0B0F127_RoundPrepare = 1,
-    A42496AEB0B0F127_RoundWaitBegin = 2,
-    A42496AEB0B0F127_RoundFight = 3,
-    A42496AEB0B0F127_RoundPost = 4,
-    A42496AEB0B0F127_WaitSettle = 5,
+pub const BattleState = enum(i32) {
+    BattleState_None = 0,
+    BattleState_RoundPrepare = 1,
+    BattleState_RoundWaitBegin = 2,
+    BattleState_RoundFight = 3,
+    BattleState_RoundPost = 4,
+    BattleState_WaitSettle = 5,
     _,
 };
 
@@ -501,14 +745,6 @@ pub const AdvFactionType = enum(i32) {
     AdvFactionType_Truth = 5,
     AdvFactionType_Sovereign = 6,
     AdvFactionType_Usurper = 7,
-    _,
-};
-
-pub const E14C0D2815A422A3 = enum(i32) {
-    E14C0D2815A422A3_WaitToUse = 0,
-    E14C0D2815A422A3_WaitToDispatch = 1,
-    E14C0D2815A422A3_Using = 2,
-    E14C0D2815A422A3_Reserved = 3,
     _,
 };
 
@@ -636,16 +872,16 @@ pub const EC32F7EF726B87C7 = struct {
     };
 };
 
-pub const E74D3FA16C3EC591 = struct {
+pub const BattleSettleReq = struct {
     pub const cmd_id: u16 = 318;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    E75D5ACD709677B7: bool = false,
-    EC3E42FF95A3C3BF: u32 = 0,
+    is_quit: bool = false,
+    battle_id: u32 = 0,
 
     pub const _desc_table = .{
-        .E75D5ACD709677B7 = fd(5, null, .{ .Varint = .Simple }),
-        .EC3E42FF95A3C3BF = fd(6, null, .{ .Varint = .Simple }),
+        .is_quit = fd(5, null, .{ .Varint = .Simple }),
+        .battle_id = fd(6, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -775,11 +1011,11 @@ pub const GetChallengeThemeActivityRsp = struct {
 
 pub const FightFaction = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    BA9E98787BA54B71: ArrayList(AFAA65E0C299311A) = .empty,
+    faction_npc_list: ArrayList(FightNpc) = .empty,
     adv_faction: ?AdvFaction = null,
 
     pub const _desc_table = .{
-        .BA9E98787BA54B71 = fd(2, null, .{ .List = .{ .SubMessage = {} } }),
+        .faction_npc_list = fd(2, null, .{ .List = .{ .SubMessage = {} } }),
         .adv_faction = fd(14, null, .{ .SubMessage = {} }),
     };
 };
@@ -1034,11 +1270,11 @@ pub const E998EDD2A8045BC7 = struct {
 pub const StageRecord = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     F745D437EF3FB7AD: bool = false,
-    E544943195A58FD9: u32 = 0,
+    stage_id: u32 = 0,
 
     pub const _desc_table = .{
         .F745D437EF3FB7AD = fd(4, null, .{ .Varint = .Simple }),
-        .E544943195A58FD9 = fd(5, null, .{ .Varint = .Simple }),
+        .stage_id = fd(5, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -1366,10 +1602,10 @@ pub const BD591599A2B2D453 = struct {
     pub const cmd_id: u16 = 1416;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    E75D5ACD709677B7: bool = false,
+    is_quit: bool = false,
 
     pub const _desc_table = .{
-        .E75D5ACD709677B7 = fd(7, null, .{ .Varint = .Simple }),
+        .is_quit = fd(7, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -1409,13 +1645,13 @@ pub const TruthFaction = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     B4F5FA208C66F932: ArrayList(u32) = .empty,
     adv_faction: ?AdvFaction = null,
-    BA9E98787BA54B71: ArrayList(F6692FB3189E660B) = .empty,
+    faction_npc_list: ArrayList(F6692FB3189E660B) = .empty,
     FBC0C091BB6EB476: ArrayList(B0B6782F0E924C9E) = .empty,
 
     pub const _desc_table = .{
         .B4F5FA208C66F932 = fd(5, null, .{ .PackedList = .{ .Varint = .Simple } }),
         .adv_faction = fd(8, null, .{ .SubMessage = {} }),
-        .BA9E98787BA54B71 = fd(10, null, .{ .List = .{ .SubMessage = {} } }),
+        .faction_npc_list = fd(10, null, .{ .List = .{ .SubMessage = {} } }),
         .FBC0C091BB6EB476 = fd(13, null, .{ .List = .{ .SubMessage = {} } }),
     };
 };
@@ -1446,12 +1682,12 @@ pub const ChallengeThemeActivity = struct {
     };
 };
 
-pub const A81088CC0ABAD902 = struct {
+pub const FinishDialogPackRsp = struct {
     pub const cmd_id: u16 = 401;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
     AED7C0E14465B543: u32 = 0,
-    B30DE9FD9322C416: ArrayList(E0259435AA990773) = .empty,
+    B30DE9FD9322C416: ArrayList(SubmitItem) = .empty,
     F35643C7034CBC66: u32 = 0,
     ED9DB7AA4A16E700: u32 = 0,
     FECC25D449E2C2E3: ?ItemList = null,
@@ -1531,27 +1767,27 @@ pub const BB616890CC3E264F = struct {
     pub const cmd_id: u16 = 311;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    A369620D3F49BE1F: u32 = 0,
+    verify_battle_id: u32 = 0,
     retcode: Retcode = @enumFromInt(0),
     FD21377ADAA2137E: u32 = 0,
     EEE7A4CC4DE96E90: u32 = 0,
 
     pub const _desc_table = .{
-        .A369620D3F49BE1F = fd(4, null, .{ .Varint = .Simple }),
+        .verify_battle_id = fd(4, null, .{ .Varint = .Simple }),
         .retcode = fd(6, null, .{ .Varint = .Simple }),
         .FD21377ADAA2137E = fd(7, null, .{ .Varint = .Simple }),
         .EEE7A4CC4DE96E90 = fd(12, null, .{ .Varint = .Simple }),
     };
 };
 
-pub const A3FCC7551BB47D3E = struct {
+pub const StageBrief = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    E544943195A58FD9: u32 = 0,
+    stage_id: u32 = 0,
     inst_id: u32 = 0,
     group_id: u32 = 0,
 
     pub const _desc_table = .{
-        .E544943195A58FD9 = fd(3, null, .{ .Varint = .Simple }),
+        .stage_id = fd(3, null, .{ .Varint = .Simple }),
         .inst_id = fd(11, null, .{ .Varint = .Simple }),
         .group_id = fd(15, null, .{ .Varint = .Simple }),
     };
@@ -1718,11 +1954,11 @@ pub const F809AC8978AA14B0 = struct {
 
 pub const BC3C42D2CD06C669 = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    FF9D414492A919E6: u32 = 0,
-    status: B80E3F79A9598E39 = @enumFromInt(0),
+    faction_npc_id: u32 = 0,
+    status: AdvFactionNpcStatus = @enumFromInt(0),
 
     pub const _desc_table = .{
-        .FF9D414492A919E6 = fd(6, null, .{ .Varint = .Simple }),
+        .faction_npc_id = fd(6, null, .{ .Varint = .Simple }),
         .status = fd(11, null, .{ .Varint = .Simple }),
     };
 };
@@ -1908,10 +2144,10 @@ pub const FA90D5A2F6B358A1 = struct {
     pub const cmd_id: u16 = 363;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    E544943195A58FD9: u32 = 0,
+    stage_id: u32 = 0,
 
     pub const _desc_table = .{
-        .E544943195A58FD9 = fd(7, null, .{ .Varint = .Simple }),
+        .stage_id = fd(7, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -2020,28 +2256,28 @@ pub const FF19B35FAAD11218 = struct {
     };
 };
 
-pub const E1B739E98816DAD2 = struct {
+pub const BattleRoundResultRsp = struct {
     pub const cmd_id: u16 = 327;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
     EEE7A4CC4DE96E90: u32 = 0,
-    ACB2618BBEBDDCFD: ArrayList(F14A0731FBC1DD2E) = .empty,
-    A369620D3F49BE1F: u32 = 0,
-    B1E5BF7E5F6AAD15: E9B5B38A7B3AFEA8 = @enumFromInt(0),
+    round_settle_list: ArrayList(BattleRoundSettle) = .empty,
+    verify_battle_id: u32 = 0,
+    verify_status: BattleRoundStatus = @enumFromInt(0),
     FD21377ADAA2137E: u32 = 0,
     retcode: Retcode = @enumFromInt(0),
-    BA15299EF6D26801: F174A518FFF944D0 = @enumFromInt(0),
-    AC616736DDF14944: ?BCFB5B7315948416 = null,
+    verify_round_end_reason: BattleRoundEndReason = @enumFromInt(0),
+    refresh_stage_battle_info: ?StageBattleInfo = null,
 
     pub const _desc_table = .{
         .EEE7A4CC4DE96E90 = fd(1, null, .{ .Varint = .Simple }),
-        .ACB2618BBEBDDCFD = fd(3, null, .{ .List = .{ .SubMessage = {} } }),
-        .A369620D3F49BE1F = fd(4, null, .{ .Varint = .Simple }),
-        .B1E5BF7E5F6AAD15 = fd(7, null, .{ .Varint = .Simple }),
+        .round_settle_list = fd(3, null, .{ .List = .{ .SubMessage = {} } }),
+        .verify_battle_id = fd(4, null, .{ .Varint = .Simple }),
+        .verify_status = fd(7, null, .{ .Varint = .Simple }),
         .FD21377ADAA2137E = fd(9, null, .{ .Varint = .Simple }),
         .retcode = fd(10, null, .{ .Varint = .Simple }),
-        .BA15299EF6D26801 = fd(13, null, .{ .Varint = .Simple }),
-        .AC616736DDF14944 = fd(15, null, .{ .SubMessage = {} }),
+        .verify_round_end_reason = fd(13, null, .{ .Varint = .Simple }),
+        .refresh_stage_battle_info = fd(15, null, .{ .SubMessage = {} }),
     };
 };
 
@@ -2056,14 +2292,14 @@ pub const BC540D719CB1793A = struct {
     };
 };
 
-pub const BCFB5B7315948416 = struct {
+pub const StageBattleInfo = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    BDAD7F732E7B8AE9: ?A3FCC7551BB47D3E = null,
-    E9A48BD4F2012413: ?FA5E5452EB635D9C = null,
+    stage_brief: ?StageBrief = null,
+    battle_info: ?BattleInfo = null,
 
     pub const _desc_table = .{
-        .BDAD7F732E7B8AE9 = fd(7, null, .{ .SubMessage = {} }),
-        .E9A48BD4F2012413 = fd(13, null, .{ .SubMessage = {} }),
+        .stage_brief = fd(7, null, .{ .SubMessage = {} }),
+        .battle_info = fd(13, null, .{ .SubMessage = {} }),
     };
 };
 
@@ -2081,11 +2317,11 @@ pub const A032EAF7827061CC = struct {
 pub const HappyFaction = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     adv_faction: ?AdvFaction = null,
-    BA9E98787BA54B71: ArrayList(BC3C42D2CD06C669) = .empty,
+    faction_npc_list: ArrayList(BC3C42D2CD06C669) = .empty,
 
     pub const _desc_table = .{
         .adv_faction = fd(2, null, .{ .SubMessage = {} }),
-        .BA9E98787BA54B71 = fd(14, null, .{ .List = .{ .SubMessage = {} } }),
+        .faction_npc_list = fd(14, null, .{ .List = .{ .SubMessage = {} } }),
     };
 };
 
@@ -2093,7 +2329,7 @@ pub const AEA060EE8383FB94 = struct {
     pub const cmd_id: u16 = 336;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    B477B4BB95A0E9BD: ?E2D8A59C3578989F = null,
+    B477B4BB95A0E9BD: ?BattleVarData = null,
 
     pub const _desc_table = .{
         .B477B4BB95A0E9BD = fd(14, null, .{ .SubMessage = {} }),
@@ -2146,13 +2382,13 @@ pub const E16BA60F46D98DAC = struct {
     pub const cmd_id: u16 = 333;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    B50F9D8E94860816: ?BCFB5B7315948416 = null,
-    ACB2618BBEBDDCFD: ArrayList(F14A0731FBC1DD2E) = .empty,
+    B50F9D8E94860816: ?StageBattleInfo = null,
+    round_settle_list: ArrayList(BattleRoundSettle) = .empty,
     retcode: Retcode = @enumFromInt(0),
 
     pub const _desc_table = .{
         .B50F9D8E94860816 = fd(5, null, .{ .SubMessage = {} }),
-        .ACB2618BBEBDDCFD = fd(10, null, .{ .List = .{ .SubMessage = {} } }),
+        .round_settle_list = fd(10, null, .{ .List = .{ .SubMessage = {} } }),
         .retcode = fd(12, null, .{ .Varint = .Simple }),
     };
 };
@@ -2407,7 +2643,7 @@ pub const B0BEDBD6AEE2797D = struct {
 
 pub const B534C88E5BE7E586 = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    F562DA1C00CE60C6: AE3E00CA75109F83 = @enumFromInt(0),
+    state: AE3E00CA75109F83 = @enumFromInt(0),
     A216B3E96214F100: bool = false,
     B204B6C78C92F041: bool = false,
     group_id: u32 = 0,
@@ -2417,7 +2653,7 @@ pub const B534C88E5BE7E586 = struct {
     E8BC248B0A0523F7: E96C91F11D897D9E = @enumFromInt(0),
 
     pub const _desc_table = .{
-        .F562DA1C00CE60C6 = fd(1, null, .{ .Varint = .Simple }),
+        .state = fd(1, null, .{ .Varint = .Simple }),
         .A216B3E96214F100 = fd(2, null, .{ .Varint = .Simple }),
         .B204B6C78C92F041 = fd(3, null, .{ .Varint = .Simple }),
         .group_id = fd(4, null, .{ .Varint = .Simple }),
@@ -2428,18 +2664,18 @@ pub const B534C88E5BE7E586 = struct {
     };
 };
 
-pub const B62A081D902B8FBA = struct {
+pub const EnterBattleNotify = struct {
     pub const cmd_id: u16 = 331;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    F562DA1C00CE60C6: A42496AEB0B0F127 = @enumFromInt(0),
-    BDC5381C6C3808A2: ArrayList(F14A0731FBC1DD2E) = .empty,
-    B4638A6D663AF081: ?BCFB5B7315948416 = null,
+    state: BattleState = @enumFromInt(0),
+    BDC5381C6C3808A2: ArrayList(BattleRoundSettle) = .empty,
+    stage_battle_info: ?StageBattleInfo = null,
 
     pub const _desc_table = .{
-        .F562DA1C00CE60C6 = fd(6, null, .{ .Varint = .Simple }),
+        .state = fd(6, null, .{ .Varint = .Simple }),
         .BDC5381C6C3808A2 = fd(14, null, .{ .List = .{ .SubMessage = {} } }),
-        .B4638A6D663AF081 = fd(15, null, .{ .SubMessage = {} }),
+        .stage_battle_info = fd(15, null, .{ .SubMessage = {} }),
     };
 };
 
@@ -2955,7 +3191,7 @@ pub const StageGetRecordRsp = struct {
     };
 };
 
-pub const E0259435AA990773 = struct {
+pub const SubmitItem = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     F7484013A81F2350: u32 = 0,
     B6C1927BB80A8F0A: ?A4582399B331BB5C = null,
@@ -3245,11 +3481,11 @@ pub const A7001D18673DCBD8 = struct {
 
 pub const E7BFC5EDAA0104F5 = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    BCA1345B630504ED: u32 = 0,
+    battle_round_index: u32 = 0,
     ADF085C0615770AB: u32 = 0,
 
     pub const _desc_table = .{
-        .BCA1345B630504ED = fd(5, null, .{ .Varint = .Simple }),
+        .battle_round_index = fd(5, null, .{ .Varint = .Simple }),
         .ADF085C0615770AB = fd(7, null, .{ .Varint = .Simple }),
     };
 };
@@ -3329,13 +3565,13 @@ pub const E14F543A35520C78 = struct {
     pub const cmd_id: u16 = 313;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    A369620D3F49BE1F: u32 = 0,
+    verify_battle_id: u32 = 0,
     EEE7A4CC4DE96E90: u32 = 0,
     FD21377ADAA2137E: u32 = 0,
     retcode: Retcode = @enumFromInt(0),
 
     pub const _desc_table = .{
-        .A369620D3F49BE1F = fd(6, null, .{ .Varint = .Simple }),
+        .verify_battle_id = fd(6, null, .{ .Varint = .Simple }),
         .EEE7A4CC4DE96E90 = fd(7, null, .{ .Varint = .Simple }),
         .FD21377ADAA2137E = fd(12, null, .{ .Varint = .Simple }),
         .retcode = fd(15, null, .{ .Varint = .Simple }),
@@ -3570,14 +3806,14 @@ pub const B6E05532F88C4D25 = struct {
     pub const cmd_id: u16 = 305;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    BCA1345B630504ED: u32 = 0,
-    A87B1D96E2C92FBA: u32 = 0,
-    EC3E42FF95A3C3BF: u32 = 0,
+    battle_round_index: u32 = 0,
+    battle_stage_id: u32 = 0,
+    battle_id: u32 = 0,
 
     pub const _desc_table = .{
-        .BCA1345B630504ED = fd(5, null, .{ .Varint = .Simple }),
-        .A87B1D96E2C92FBA = fd(8, null, .{ .Varint = .Simple }),
-        .EC3E42FF95A3C3BF = fd(11, null, .{ .Varint = .Simple }),
+        .battle_round_index = fd(5, null, .{ .Varint = .Simple }),
+        .battle_stage_id = fd(8, null, .{ .Varint = .Simple }),
+        .battle_id = fd(11, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -3663,7 +3899,7 @@ pub const F1B67774003DB469 = struct {
     pub const cmd_id: u16 = 1099;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    FD1D75AC8591D572: ?E0259435AA990773 = null,
+    FD1D75AC8591D572: ?SubmitItem = null,
 
     pub const _desc_table = .{
         .FD1D75AC8591D572 = fd(7, null, .{ .SubMessage = {} }),
@@ -3674,14 +3910,14 @@ pub const FCEDB2CC7300E47F = struct {
     pub const cmd_id: u16 = 303;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    EC3E42FF95A3C3BF: u32 = 0,
-    BCA1345B630504ED: u32 = 0,
-    A87B1D96E2C92FBA: u32 = 0,
+    battle_id: u32 = 0,
+    battle_round_index: u32 = 0,
+    battle_stage_id: u32 = 0,
 
     pub const _desc_table = .{
-        .EC3E42FF95A3C3BF = fd(8, null, .{ .Varint = .Simple }),
-        .BCA1345B630504ED = fd(5, null, .{ .Varint = .Simple }),
-        .A87B1D96E2C92FBA = fd(4, null, .{ .Varint = .Simple }),
+        .battle_id = fd(8, null, .{ .Varint = .Simple }),
+        .battle_round_index = fd(5, null, .{ .Varint = .Simple }),
+        .battle_stage_id = fd(4, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -3754,7 +3990,7 @@ pub const EA69CA8AA8230FBE = struct {
     FECC25D449E2C2E3: ?ItemList = null,
     FC2F3CC058613902: ?FEACDA04E93CEA1E = null,
     B1440FD33F9D7A8D: F170C2F0CE67A04C = @enumFromInt(0),
-    B50F9D8E94860816: ?BCFB5B7315948416 = null,
+    B50F9D8E94860816: ?StageBattleInfo = null,
 
     pub const _desc_table = .{
         .retcode = fd(9, null, .{ .Varint = .Simple }),
@@ -3907,12 +4143,12 @@ pub const AA546C5B1FB00004 = struct {
 
 pub const SceneCharacter = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    status: F2968E0ADC45246C = @enumFromInt(0),
-    E544943195A58FD9: u32 = 0,
+    status: SceneCharacterStatus = @enumFromInt(0),
+    stage_id: u32 = 0,
 
     pub const _desc_table = .{
         .status = fd(2, null, .{ .Varint = .Simple }),
-        .E544943195A58FD9 = fd(3, null, .{ .Varint = .Simple }),
+        .stage_id = fd(3, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -3974,13 +4210,13 @@ pub const AC4EB2A671F5A66E = struct {
     EEE7A4CC4DE96E90: u32 = 0,
     retcode: Retcode = @enumFromInt(0),
     FD21377ADAA2137E: u32 = 0,
-    A369620D3F49BE1F: u32 = 0,
+    verify_battle_id: u32 = 0,
 
     pub const _desc_table = .{
         .EEE7A4CC4DE96E90 = fd(5, null, .{ .Varint = .Simple }),
         .retcode = fd(6, null, .{ .Varint = .Simple }),
         .FD21377ADAA2137E = fd(13, null, .{ .Varint = .Simple }),
-        .A369620D3F49BE1F = fd(14, null, .{ .Varint = .Simple }),
+        .verify_battle_id = fd(14, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -4029,12 +4265,12 @@ pub const SceneGroup = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     group_id: u32 = 0,
     E7ACE1F4FE310096: ArrayList(B1C528B55CAAB068) = .empty,
-    F562DA1C00CE60C6: u32 = 0,
+    state: u32 = 0,
 
     pub const _desc_table = .{
         .group_id = fd(1, null, .{ .Varint = .Simple }),
         .E7ACE1F4FE310096 = fd(11, null, .{ .List = .{ .SubMessage = {} } }),
-        .F562DA1C00CE60C6 = fd(13, null, .{ .Varint = .Simple }),
+        .state = fd(13, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -4071,13 +4307,13 @@ pub const F2963B9F7911D9BA = struct {
 pub const F6692FB3189E660B = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     EF901F01556B499F: ArrayList(u32) = .empty,
-    F562DA1C00CE60C6: u32 = 0,
-    FF9D414492A919E6: u32 = 0,
+    state: u32 = 0,
+    faction_npc_id: u32 = 0,
 
     pub const _desc_table = .{
         .EF901F01556B499F = fd(6, null, .{ .PackedList = .{ .Varint = .Simple } }),
-        .F562DA1C00CE60C6 = fd(12, null, .{ .Varint = .Simple }),
-        .FF9D414492A919E6 = fd(13, null, .{ .Varint = .Simple }),
+        .state = fd(12, null, .{ .Varint = .Simple }),
+        .faction_npc_id = fd(13, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -4234,10 +4470,10 @@ pub const E32FAEE1296DC4CD = struct {
 
 pub const SceneProp = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    F562DA1C00CE60C6: u32 = 0,
+    state: u32 = 0,
 
     pub const _desc_table = .{
-        .F562DA1C00CE60C6 = fd(2, null, .{ .Varint = .Simple }),
+        .state = fd(2, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -4288,7 +4524,7 @@ pub const GetRewardExchangeReq = struct {
     pub const _desc_table = .{};
 };
 
-pub const FC74644F6C293255 = struct {
+pub const BattleVar = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     id: u32 = 0,
     A35E61455FB5F910: i64 = 0,
@@ -4478,13 +4714,13 @@ pub const FDA139C421610BF4 = struct {
     };
 };
 
-pub const AFAA65E0C299311A = struct {
+pub const FightNpc = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    FF9D414492A919E6: u32 = 0,
-    status: B80E3F79A9598E39 = @enumFromInt(0),
+    faction_npc_id: u32 = 0,
+    status: AdvFactionNpcStatus = @enumFromInt(0),
 
     pub const _desc_table = .{
-        .FF9D414492A919E6 = fd(8, null, .{ .Varint = .Simple }),
+        .faction_npc_id = fd(8, null, .{ .Varint = .Simple }),
         .status = fd(12, null, .{ .Varint = .Simple }),
     };
 };
@@ -4949,15 +5185,15 @@ pub const B342D9F8D617F2D4 = struct {
     pub const cmd_id: u16 = 343;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    A87B1D96E2C92FBA: u32 = 0,
-    BCA1345B630504ED: u32 = 0,
-    EC3E42FF95A3C3BF: u32 = 0,
-    B477B4BB95A0E9BD: ?E2D8A59C3578989F = null,
+    battle_stage_id: u32 = 0,
+    battle_round_index: u32 = 0,
+    battle_id: u32 = 0,
+    B477B4BB95A0E9BD: ?BattleVarData = null,
 
     pub const _desc_table = .{
-        .A87B1D96E2C92FBA = fd(2, null, .{ .Varint = .Simple }),
-        .BCA1345B630504ED = fd(15, null, .{ .Varint = .Simple }),
-        .EC3E42FF95A3C3BF = fd(4, null, .{ .Varint = .Simple }),
+        .battle_stage_id = fd(2, null, .{ .Varint = .Simple }),
+        .battle_round_index = fd(15, null, .{ .Varint = .Simple }),
+        .battle_id = fd(4, null, .{ .Varint = .Simple }),
         .B477B4BB95A0E9BD = fd(5, null, .{ .SubMessage = {} }),
     };
 };
@@ -5055,11 +5291,11 @@ pub const F0E91761BDF66A89 = struct {
     };
 };
 
-pub const E5A34272BBA85332 = struct {
+pub const FinishDialogPackReq = struct {
     pub const cmd_id: u16 = 408;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    BD0578DA37598134: ArrayList(E0259435AA990773) = .empty,
+    BD0578DA37598134: ArrayList(SubmitItem) = .empty,
     F0C85D07E6FD2942: ArrayList(u32) = .empty,
     group_id: u32 = 0,
     A74D082233082819: ArrayList(WorldVar) = .empty,
@@ -5419,10 +5655,10 @@ pub const A8A74DC8E1133492 = struct {
     };
 };
 
-pub const E2D8A59C3578989F = struct {
+pub const BattleVarData = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    A2D30A8E8F12CBA4: ArrayList(FC74644F6C293255) = .empty,
-    A37D74BF0A627B93: ArrayList(FC74644F6C293255) = .empty,
+    A2D30A8E8F12CBA4: ArrayList(BattleVar) = .empty,
+    A37D74BF0A627B93: ArrayList(BattleVar) = .empty,
 
     pub const _desc_table = .{
         .A2D30A8E8F12CBA4 = fd(1, null, .{ .List = .{ .SubMessage = {} } }),
@@ -5433,12 +5669,12 @@ pub const E2D8A59C3578989F = struct {
 pub const ChsPlayerTeamSyncInfo = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     sync_chs_team_list: ArrayList(ChsPlayerTeam) = .empty,
-    B2C30614158C1748: u32 = 0,
+    sync_team_sprite_count: u32 = 0,
     E9FBB1ABF73CDF5D: u32 = 0,
 
     pub const _desc_table = .{
         .sync_chs_team_list = fd(7, null, .{ .List = .{ .SubMessage = {} } }),
-        .B2C30614158C1748 = fd(8, null, .{ .Varint = .Simple }),
+        .sync_team_sprite_count = fd(8, null, .{ .Varint = .Simple }),
         .E9FBB1ABF73CDF5D = fd(11, null, .{ .Varint = .Simple }),
     };
 };
@@ -5525,13 +5761,13 @@ pub const GetChsPlayerTeamRsp = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     chs_team_list: ArrayList(ChsPlayerTeam) = .empty,
     retcode: Retcode = @enumFromInt(0),
-    B4EEAAD1B4A2CA53: u32 = 0,
+    team_sprite_count: u32 = 0,
     A6245CAD11E99DDC: u32 = 0,
 
     pub const _desc_table = .{
         .chs_team_list = fd(1, null, .{ .List = .{ .SubMessage = {} } }),
         .retcode = fd(3, null, .{ .Varint = .Simple }),
-        .B4EEAAD1B4A2CA53 = fd(9, null, .{ .Varint = .Simple }),
+        .team_sprite_count = fd(9, null, .{ .Varint = .Simple }),
         .A6245CAD11E99DDC = fd(11, null, .{ .Varint = .Simple }),
     };
 };
@@ -5614,7 +5850,7 @@ pub const A930180087C5ABD9 = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     F1BC8D6CC88156BD: ArrayList(Anomaly) = .empty,
     F3FEDD202BC7976E: B7A45CDAAF1D9154 = @enumFromInt(0),
-    E544943195A58FD9: u32 = 0,
+    stage_id: u32 = 0,
     BA9CBC85BBB346A3: u32 = 0,
     F71EAD27ECC3DDB0: ?ItemList = null,
     B1E77DD6D9B865FD: u32 = 0,
@@ -5624,7 +5860,7 @@ pub const A930180087C5ABD9 = struct {
     pub const _desc_table = .{
         .F1BC8D6CC88156BD = fd(1, null, .{ .List = .{ .SubMessage = {} } }),
         .F3FEDD202BC7976E = fd(2, null, .{ .Varint = .Simple }),
-        .E544943195A58FD9 = fd(6, null, .{ .Varint = .Simple }),
+        .stage_id = fd(6, null, .{ .Varint = .Simple }),
         .BA9CBC85BBB346A3 = fd(7, null, .{ .Varint = .Simple }),
         .F71EAD27ECC3DDB0 = fd(8, null, .{ .SubMessage = {} }),
         .B1E77DD6D9B865FD = fd(12, null, .{ .Varint = .Simple }),
@@ -5898,14 +6134,16 @@ pub const A9D1F3C7D12DB057 = struct {
     pub const _desc_table = .{};
 };
 
-pub const FA5E5452EB635D9C = struct {
+pub const BattleInfo = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
     E96A0680EB239558: u32 = 0,
-    BCA1345B630504ED: u32 = 0,
-    E5A044A8C410FE90: ?E2D8A59C3578989F = null,
-    EC3E42FF95A3C3BF: u32 = 0,
-    EA3325BB69255C2F: A42496AEB0B0F127 = @enumFromInt(0),
-    A87B1D96E2C92FBA: u32 = 0,
+    battle_round_index: u32 = 0,
+    F96EFF77817A6E90: ?ChsGameDeployData = null,
+    E5A044A8C410FE90: ?BattleVarData = null,
+    battle_id: u32 = 0,
+    BFA79707CC4E2AA8: ?ChsGameDeployData = null,
+    battle_state: BattleState = @enumFromInt(0),
+    battle_stage_id: u32 = 0,
     F9F70ECD544F7C5F: u32 = 0,
     B617D07673ADD90E: u32 = 0,
     F15C30CDF68AED52: u32 = 0,
@@ -5913,11 +6151,13 @@ pub const FA5E5452EB635D9C = struct {
 
     pub const _desc_table = .{
         .E96A0680EB239558 = fd(1, null, .{ .Varint = .Simple }),
-        .BCA1345B630504ED = fd(2, null, .{ .Varint = .Simple }),
+        .battle_round_index = fd(2, null, .{ .Varint = .Simple }),
+        .F96EFF77817A6E90 = fd(3, null, .{ .SubMessage = {} }),
         .E5A044A8C410FE90 = fd(5, null, .{ .SubMessage = {} }),
-        .EC3E42FF95A3C3BF = fd(7, null, .{ .Varint = .Simple }),
-        .EA3325BB69255C2F = fd(10, null, .{ .Varint = .Simple }),
-        .A87B1D96E2C92FBA = fd(11, null, .{ .Varint = .Simple }),
+        .battle_id = fd(7, null, .{ .Varint = .Simple }),
+        .BFA79707CC4E2AA8 = fd(9, null, .{ .SubMessage = {} }),
+        .battle_state = fd(10, null, .{ .Varint = .Simple }),
+        .battle_stage_id = fd(11, null, .{ .Varint = .Simple }),
         .F9F70ECD544F7C5F = fd(12, null, .{ .Varint = .Simple }),
         .B617D07673ADD90E = fd(13, null, .{ .Varint = .Simple }),
         .F15C30CDF68AED52 = fd(14, null, .{ .Varint = .Simple }),
@@ -6034,23 +6274,23 @@ pub const F2779F0D96A88142 = struct {
     };
 };
 
-pub const B2DD9D1CEC42ABC5 = struct {
+pub const BattleSettleRsp = struct {
     pub const cmd_id: u16 = 312;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
     retcode: Retcode = @enumFromInt(0),
-    F1D55C0371734DFA: ?A3FCC7551BB47D3E = null,
-    ACB2618BBEBDDCFD: ArrayList(F14A0731FBC1DD2E) = .empty,
-    A369620D3F49BE1F: u32 = 0,
-    B347CF654013BEEB: BBA71A2D8DC05180 = @enumFromInt(0),
+    settle_stage_brief: ?StageBrief = null,
+    round_settle_list: ArrayList(BattleRoundSettle) = .empty,
+    verify_battle_id: u32 = 0,
+    battle_result: BattleResult = @enumFromInt(0),
     FECC25D449E2C2E3: ?ItemList = null,
 
     pub const _desc_table = .{
         .retcode = fd(8, null, .{ .Varint = .Simple }),
-        .F1D55C0371734DFA = fd(9, null, .{ .SubMessage = {} }),
-        .ACB2618BBEBDDCFD = fd(10, null, .{ .List = .{ .SubMessage = {} } }),
-        .A369620D3F49BE1F = fd(11, null, .{ .Varint = .Simple }),
-        .B347CF654013BEEB = fd(12, null, .{ .Varint = .Simple }),
+        .settle_stage_brief = fd(9, null, .{ .SubMessage = {} }),
+        .round_settle_list = fd(10, null, .{ .List = .{ .SubMessage = {} } }),
+        .verify_battle_id = fd(11, null, .{ .Varint = .Simple }),
+        .battle_result = fd(12, null, .{ .Varint = .Simple }),
         .FECC25D449E2C2E3 = fd(13, null, .{ .SubMessage = {} }),
     };
 };
@@ -6092,7 +6332,7 @@ pub const F80C0164065337EC = struct {
     unit_type: ChsUnitType = @enumFromInt(0),
     B42FFDC164324B83: u32 = 0,
     B04826D0D10734A3: bool = false,
-    F562DA1C00CE60C6: E14C0D2815A422A3 = @enumFromInt(0),
+    state: E14C0D2815A422A3 = @enumFromInt(0),
     ABBF7FE48471FAE1: BD51C9B00691E15F = @enumFromInt(0),
     A7D40882B546188E: u32 = 0,
 
@@ -6102,7 +6342,7 @@ pub const F80C0164065337EC = struct {
         .unit_type = fd(5, null, .{ .Varint = .Simple }),
         .B42FFDC164324B83 = fd(7, null, .{ .Varint = .Simple }),
         .B04826D0D10734A3 = fd(9, null, .{ .Varint = .Simple }),
-        .F562DA1C00CE60C6 = fd(11, null, .{ .Varint = .Simple }),
+        .state = fd(11, null, .{ .Varint = .Simple }),
         .ABBF7FE48471FAE1 = fd(13, null, .{ .Varint = .Simple }),
         .A7D40882B546188E = fd(15, null, .{ .Varint = .Simple }),
     };
@@ -6217,26 +6457,26 @@ pub const PlayerGetWorldVarRsp = struct {
     };
 };
 
-pub const B70948D17845BFD5 = struct {
+pub const BattleRoundResultReq = struct {
     pub const cmd_id: u16 = 335;
 
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    EC3E42FF95A3C3BF: u32 = 0,
-    EA3278555E843126: F174A518FFF944D0 = @enumFromInt(0),
-    BCA1345B630504ED: u32 = 0,
-    status: E9B5B38A7B3AFEA8 = @enumFromInt(0),
+    battle_id: u32 = 0,
+    round_end_reason: BattleRoundEndReason = @enumFromInt(0),
+    battle_round_index: u32 = 0,
+    status: BattleRoundStatus = @enumFromInt(0),
     FDD63A81DE4CF914: ?E940FF9C2EE59035 = null,
-    E5A044A8C410FE90: ?E2D8A59C3578989F = null,
-    A87B1D96E2C92FBA: u32 = 0,
+    E5A044A8C410FE90: ?BattleVarData = null,
+    battle_stage_id: u32 = 0,
 
     pub const _desc_table = .{
-        .EC3E42FF95A3C3BF = fd(12, null, .{ .Varint = .Simple }),
-        .EA3278555E843126 = fd(3, null, .{ .Varint = .Simple }),
-        .BCA1345B630504ED = fd(6, null, .{ .Varint = .Simple }),
+        .battle_id = fd(12, null, .{ .Varint = .Simple }),
+        .round_end_reason = fd(3, null, .{ .Varint = .Simple }),
+        .battle_round_index = fd(6, null, .{ .Varint = .Simple }),
         .status = fd(4, null, .{ .Varint = .Simple }),
         .FDD63A81DE4CF914 = fd(13, null, .{ .SubMessage = {} }),
         .E5A044A8C410FE90 = fd(7, null, .{ .SubMessage = {} }),
-        .A87B1D96E2C92FBA = fd(10, null, .{ .Varint = .Simple }),
+        .battle_stage_id = fd(10, null, .{ .Varint = .Simple }),
     };
 };
 
@@ -6653,16 +6893,16 @@ pub const F9C39C54EDB6758F = struct {
     };
 };
 
-pub const F14A0731FBC1DD2E = struct {
+pub const BattleRoundSettle = struct {
     pb: protobuf.ProtobufMixins(@This()) = .{},
-    A87B1D96E2C92FBA: u32 = 0,
-    A99E76D2AC84CA08: E9B5B38A7B3AFEA8 = @enumFromInt(0),
-    BCA1345B630504ED: u32 = 0,
+    battle_stage_id: u32 = 0,
+    round_status: BattleRoundStatus = @enumFromInt(0),
+    battle_round_index: u32 = 0,
 
     pub const _desc_table = .{
-        .A87B1D96E2C92FBA = fd(5, null, .{ .Varint = .Simple }),
-        .A99E76D2AC84CA08 = fd(10, null, .{ .Varint = .Simple }),
-        .BCA1345B630504ED = fd(14, null, .{ .Varint = .Simple }),
+        .battle_stage_id = fd(5, null, .{ .Varint = .Simple }),
+        .round_status = fd(10, null, .{ .Varint = .Simple }),
+        .battle_round_index = fd(14, null, .{ .Varint = .Simple }),
     };
 };
 

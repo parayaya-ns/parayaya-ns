@@ -42,6 +42,8 @@ pub fn onSceneEntityMoveReq(_: Allocator, interface: *AppInterface, req: pb.Scen
 }
 
 pub fn onFastTravelReq(_: Allocator, interface: *AppInterface, req: pb.FastTravelReq) !pb.FastTravelRsp {
+    if (interface.scene == null) return .{ .retcode = .RetFail };
+
     if (req.travel_point != null) {
         log.debug("Fast travel to point is not implemented yet. Requested point: {}", .{req.travel_point.?});
         return .{ .retcode = .RetServerInternalError };
@@ -55,15 +57,13 @@ pub fn onFastTravelReq(_: Allocator, interface: *AppInterface, req: pb.FastTrave
         return .{ .retcode = .RetFail }; // should not happen, unless unlocked teleport was removed from table.
     };
 
-    if (interface.scene) |scene| {
-        scene.fastTravelToTeleport(interface.player.uid, config);
-    }
+    interface.scene.?.fastTravelToTeleport(interface.player.uid, config);
 
     return .{ .retcode = .RetSucc };
 }
 
 pub fn onSummonAdvSpriteMinionReq(gpa: Allocator, interface: *AppInterface, req: pb.SummonAdvSpriteMinionReq) !pb.SummonAdvSpriteMinionRsp {
-    const scene = interface.scene orelse return .{ .retcode = .RetFail };
+    const scene = &(interface.scene orelse return .{ .retcode = .RetFail });
     const actor = scene.findPlayerActor(interface.player.uid) orelse return .{ .retcode = .RetFail };
     const summonee_entity_id = try scene.summon(gpa, actor, req.sprite_id, .fromClient(&(req.motion orelse .{})));
 

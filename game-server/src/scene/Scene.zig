@@ -12,10 +12,21 @@ scene_id: u32,
 owner_uid: u32,
 entity_id_counter: u64 = 0,
 entities: std.AutoArrayHashMapUnmanaged(u64, Entity) = .empty,
+groups: std.AutoArrayHashMapUnmanaged(u32, Group) = .empty,
 is_modified: bool = false,
+
+pub const Group = struct {
+    id: u32,
+    state: u32,
+
+    pub fn toClient(group: *const Group) pb.SceneGroup {
+        return .{ .group_id = group.id, .state = group.state };
+    }
+};
 
 pub fn deinit(scene: *Scene, gpa: Allocator) void {
     scene.entities.deinit(gpa);
+    scene.groups.deinit(gpa);
 }
 
 pub fn fastTravelToTeleport(scene: *Scene, player_uid: u32, config: *const tables.TeleportConfig) void {
@@ -25,6 +36,11 @@ pub fn fastTravelToTeleport(scene: *Scene, player_uid: u32, config: *const table
     if (scene.findPlayerActor(player_uid)) |entity| {
         entity.motion = .initFromConfig(&config.position, &config.rotation);
     }
+}
+
+// TODO: use GroupConfig
+pub fn addGroup(scene: *Scene, gpa: Allocator, id: u32) !void {
+    try scene.groups.put(gpa, id, .{ .id = id, .state = 0 });
 }
 
 pub fn addEntity(scene: *Scene, gpa: Allocator, entity: Entity) !u64 {
@@ -64,10 +80,16 @@ pub fn toClient(scene: *const Scene, gpa: Allocator) !pb.SceneInfo {
     };
 
     try scene_info.scene_entity_list.ensureTotalCapacity(gpa, scene.entities.count());
+    try scene_info.scene_group_list.ensureTotalCapacity(gpa, scene.groups.count());
 
     var entities = scene.entities.iterator();
     while (entities.next()) |e| {
         scene_info.scene_entity_list.appendAssumeCapacity(e.value_ptr.toClient());
+    }
+
+    var groups = scene.groups.iterator();
+    while (groups.next()) |g| {
+        scene_info.scene_group_list.appendAssumeCapacity(g.value_ptr.toClient());
     }
 
     return scene_info;

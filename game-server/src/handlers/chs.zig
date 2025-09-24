@@ -8,7 +8,11 @@ const log = std.log.scoped(.chs);
 
 pub fn onGetChsPlayerTeamReq(gpa: Allocator, interface: *AppInterface, _: pb.GetChsPlayerTeamReq) !pb.GetChsPlayerTeamRsp {
     const chs_teams = &interface.player.chs_teams;
-    var rsp: pb.GetChsPlayerTeamRsp = .{ .retcode = .RetSucc };
+
+    var rsp: pb.GetChsPlayerTeamRsp = .{
+        .retcode = .RetSucc,
+        .team_sprite_count = chs_teams.team_sprite_count.value,
+    };
 
     try rsp.chs_team_list.ensureTotalCapacity(gpa, chs_teams.teams.count());
     for (chs_teams.teams.map.values()) |team| {

@@ -6,10 +6,12 @@ const tables = @import("../config/tables.zig");
 const Allocator = std.mem.Allocator;
 
 pub const max_team_count: u32 = 20;
+pub const max_team_sprite_count: u32 = 8;
 pub const default: @This() = .{};
 
 property: properties.PropertyMixin(@This()) = .{},
 teams: properties.PropertyArrayHashMap(u32, ChsTeam) = .empty,
+team_sprite_count: properties.BasicType(u32) = .{ .value = max_team_sprite_count },
 active_team_index: properties.BasicType(u32) = .{ .value = 0 },
 
 pub fn deinit(data: *@This(), gpa: Allocator) void {
@@ -21,7 +23,10 @@ pub fn setTeam(data: *@This(), gpa: Allocator, team: ChsTeam) Allocator.Error!vo
 }
 
 pub fn syncToClient(data: *const @This(), gpa: Allocator, notify: *pb.PlayerSyncNotify) !void {
-    var chs_player_team_sync: pb.ChsPlayerTeamSyncInfo = .{};
+    var chs_player_team_sync: pb.ChsPlayerTeamSyncInfo = .{
+        .sync_team_sprite_count = data.team_sprite_count.value,
+    };
+
     try chs_player_team_sync.sync_chs_team_list.ensureTotalCapacity(gpa, data.teams.changed_keys.items.len);
 
     for (data.teams.changed_keys.items) |index| {

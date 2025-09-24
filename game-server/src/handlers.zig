@@ -9,6 +9,8 @@ const cmd_id_name = "cmd_id";
 
 const namespaces: []const type = &.{
     @import("handlers/player.zig"),
+    @import("handlers/scene.zig"),
+    @import("handlers/battle.zig"),
     @import("handlers/chs.zig"),
     @import("handlers/mission.zig"),
     @import("handlers/sprite.zig"),
@@ -26,7 +28,6 @@ const namespaces: []const type = &.{
     @import("handlers/trainer.zig"),
     @import("handlers/faction.zig"),
     @import("handlers/item_submit.zig"),
-    @import("handlers/scene.zig"),
     @import("handlers/activity.zig"),
     @import("handlers/mail.zig"),
     @import("handlers/chat.zig"),

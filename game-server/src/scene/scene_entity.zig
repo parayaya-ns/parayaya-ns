@@ -6,12 +6,15 @@ const Allocator = std.mem.Allocator;
 
 pub const EntityType = enum(i32) {
     actor = 1,
+    character = 3,
     minion = 5,
 };
 
 pub const Entity = struct {
     entity_id: u64 = 0,
     owner_uid: u32,
+    group_id: u32 = 0,
+    inst_id: u32 = 0,
     motion: Motion,
     parameters: EntityParameters,
 
@@ -24,6 +27,7 @@ pub const Entity = struct {
 
 pub const EntityParameters = union(EntityType) {
     actor: Actor,
+    character: Character,
     minion: Minion,
 
     pub const Actor = struct {
@@ -40,6 +44,22 @@ pub const EntityParameters = union(EntityType) {
                     .config_id = entity.parameters.actor.config_id,
                     .player_uid = entity.parameters.actor.player_uid,
                 },
+            };
+        }
+    };
+
+    pub const Character = struct {
+        stage_id: u32 = 0,
+
+        pub fn toClient(entity: *const Entity) pb.SceneEntity {
+            return .{
+                .entity_id = entity.entity_id,
+                .entity_type = .EntityCharacter,
+                .owner_uid = entity.owner_uid,
+                .group_id = entity.group_id,
+                .inst_id = entity.inst_id,
+                .motion = entity.motion.toClient(),
+                .scene_character = .{ .stage_id = entity.parameters.character.stage_id },
             };
         }
     };

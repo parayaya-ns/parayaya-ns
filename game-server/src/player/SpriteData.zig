@@ -24,7 +24,7 @@ pub fn unlockSprite(data: *@This(), gpa: Allocator, config: *const tables.Sprite
     if (!data.sprites.contains(config.config_id)) {
         try data.sprites.put(gpa, config.config_id, .{
             .id = config.config_id,
-            .level = 0,
+            .level = 30,
             .exp = 0,
             .rank = Sprite.max_rank,
             .seen = true,
